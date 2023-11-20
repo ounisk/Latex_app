@@ -4,8 +4,22 @@
 
 
 ## Definition of Done:
-(lisätään)
-
+### Functionality
+- User story fully implemented
+- "Works as described" 
+### Code quality
+- Peer reviewed
+- Clean, commented and maintainable
+- Pylint ?
+### Testing
+- Unit tests
+- ...
+### Documentation
+- Code commented
+- User manual up to date
+### Integration
+- User story integrated into main codebase (Trunk)
+- Application works as intended
 
 ## CI:
 ![GHA workflow badge](https://github.com/ounisk/latex_app/workflows/CI/badge.svg)
