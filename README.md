@@ -24,7 +24,7 @@
 ## CI:
 ![GHA workflow badge](https://github.com/ounisk/latex_app/workflows/CI/badge.svg)
 
-## Instructons for use
+## Instructions for use
 
 Install dependencies with command:
 
