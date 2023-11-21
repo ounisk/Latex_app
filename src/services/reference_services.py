@@ -13,4 +13,10 @@ class ReferenceService:
 
         return reference
 
+    def print_refs(self):
+        ref_list = self._reference_repository.find_all()
+
+        for ref in ref_list:
+            print(ref)
+
     # tänne myöhemmin lisää toimintoja....
