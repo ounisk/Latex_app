@@ -6,5 +6,6 @@ class Book:
         self.publisher = publisher
 
     def __str__(self):
-        return f"Type: Book\nAuthor: {self.author}\nTitle: {self.name}\nPublication date: {self.year}\nPublisher: {self.publisher}\n"
+        return f"Type: Book\nAuthor: {self.author}\nTitle: {self.name}\
+            \nPublication date: {self.year}\nPublisher: {self.publisher}\n"
     
