@@ -34,3 +34,5 @@ class App:
         publisher = self.io.read("Add publisher: ")
 
         return (author, name, year, publisher)
+    
+    # Tänne muiden viitetyyppien lukeminen
