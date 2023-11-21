@@ -6,7 +6,7 @@ class App:
     def run(self):
         self.io.write("Welcome to Latex app")
         while True:
-            command = self.io.read("Choose command (add): ")  # Lisää vaihtoehtoja myöhemmin
+            command = self.io.read("Choose command (add or print): ")  # Lisää vaihtoehtoja myöhemmin
 
             if not command:
                 break
@@ -23,6 +23,9 @@ class App:
                     self.reference_services.create_ref(author, name, year, publisher)
 
                     self.io.write("Reference added")
+
+            elif command == "print":
+                self.reference_services.print_refs()
 
     def _read_book(self):
         author = self.io.read("Add author: ")
