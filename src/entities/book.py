@@ -4,3 +4,7 @@ class Book:
         self.name = name
         self.year = year
         self.publisher = publisher
+
+    def __str__(self):
+        return f"Type: Book\nAuthor: {self.author}\nTitle: {self.name}\nPublication date: {self.year}\nPublisher: {self.publisher}\n"
+    
