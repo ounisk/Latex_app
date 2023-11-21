@@ -24,3 +24,24 @@
 ## CI:
 ![GHA workflow badge](https://github.com/ounisk/latex_app/workflows/CI/badge.svg)
 
+## Instructons for use
+
+Install dependencies with command:
+
+```bash
+poetry install
+```
+
+Enter virtual environment with command:
+
+```bash
+poetry shell
+```
+
+Now the app will start with command:
+
+```bash
+python3 src/index.py
+```
+
+Available command options within the app are shown inside the parentheses.
