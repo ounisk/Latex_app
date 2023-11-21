@@ -20,7 +20,7 @@ class Reference_Repository:
      #   return users_with_username_list[0] if len(users_with_username_list) > 0 else None
 
 
-def create(self, book):
+    def create(self, book):
         references = self.find_all()
 
         #existing_user = self.find_by_username(user.username)
