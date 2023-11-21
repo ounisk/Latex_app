@@ -1,6 +1,6 @@
-from entities.book import Book
+#from entities.book import Book
 #
-class Reference_Repository:
+class ReferenceRepository:
     def __init__(self):
         self._references = []
 

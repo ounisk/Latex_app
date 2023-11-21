@@ -4,5 +4,3 @@ class Book:
         self.name = name
         self.year = year
         self.publisher = publisher
-
-
