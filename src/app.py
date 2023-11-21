@@ -18,11 +18,16 @@ class App:
                     break
 
                 if ref_type == "book":
-                    author = self.io.read("Add author: ")
-                    name = self.io.read("Add title: ")
-                    year = self.io.read("Add publication date: ")
-                    publisher = self.io.read("Add publisher: ")
-
+                    (author, name, year, publisher) = self._read_book()
+                
                     self.reference_services.create_ref(author, name, year, publisher)
 
                     self.io.write("Reference added")
+
+    def _read_book(self):
+        author = self.io.read("Add author: ")
+        name = self.io.read("Add title: ")
+        year = self.io.read("Add publication date: ")
+        publisher = self.io.read("Add publisher: ")
+
+        return (author, name, year, publisher)
