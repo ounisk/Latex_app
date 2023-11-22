@@ -10,13 +10,17 @@ class ReferenceService:
         book = Book(author, name, year, publisher)
 
         reference = self._reference_repository.create(book)
-
+        
         return reference
 
     def print_refs(self):
         ref_list = self._reference_repository.find_all()
+        
 
-        for ref in ref_list:
-            print(ref)
+        #for ref in ref_list:
+        #    print(ref)    # Tänne return(ref_list) ja printtaus app.py:n puolella - tehtävien eriyttäminen jne.
+        return ref_list   # esim. näin
+
+
 
     # tänne myöhemmin lisää toimintoja....
