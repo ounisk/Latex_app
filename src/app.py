@@ -25,7 +25,10 @@ class App:
                     self.io.write("Reference added")
 
             elif command == "print":
-                self.reference_services.print_refs()
+                ref_list = self.reference_services.print_refs()         
+                for ref in ref_list:   #siirretty tulostus tänne services:in puolelta
+                   print(ref)
+
 
     def _read_book(self):
         author = self.io.read("Add author: ")
