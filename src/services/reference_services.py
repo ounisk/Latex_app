@@ -18,7 +18,7 @@ class ReferenceService:
 
 
         #for ref in ref_list:
-        #    print(ref)    # Tänne return(ref_list) ja 
+        #    print(ref)    # Tänne return(ref_list) ja
         # printtaus app.py:n puolella - tehtävien eriyttäminen jne.
         return ref_list   # esim. näin
 
