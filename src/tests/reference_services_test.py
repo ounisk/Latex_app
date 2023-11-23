@@ -11,9 +11,7 @@ class TestReferenceService(unittest.TestCase):
 
 
     def test_adding_book_reference_is_on_the_list(self):
-        #book = Book("Waltari", "Sinuhe", 1900, "Otava")
         self.reference_service.create_ref("Waltari", "Sinuhe", 1900, "Otava")
 
         references = self.reference_service.print_refs()
-        print(references)
-        self.assertEqual((references[0].author, references[0].name, references[0].year), ("Waltari", "Sinuhe", 1900)) #, "Otava"))
+        self.assertEqual((references[0].author, references[0].name, references[0].year), ("Waltari", "Sinuhe", 1900))
