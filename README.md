@@ -23,6 +23,7 @@
 
 ## CI:
 ![GHA workflow badge](https://github.com/ounisk/latex_app/workflows/CI/badge.svg)
+[![codecov](https://codecov.io/gh/ounisk/Latex_app/graph/badge.svg?token=9W72J2BX0L)](https://codecov.io/gh/ounisk/Latex_app)
 
 ## Instructions for use
 
