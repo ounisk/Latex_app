@@ -6,14 +6,14 @@
 ## Definition of Done:
 ### Functionality
 - User story fully implemented
-- "Works as described" 
+- "Works as described", including user documentation updated. 
 ### Code quality
 - Peer reviewed
 - Clean, commented and maintainable
-- Pylint ?
+- Pylint runs with > 9.0 score
 ### Testing
 - Unit tests
-- ...
+- Tests are automated where possible
 ### Documentation
 - Code commented
 - User manual up to date
