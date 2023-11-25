@@ -17,17 +17,10 @@ class ReferenceService:
 
     def print_refs(self):
         ref_list = self._reference_repository.find_all()
-        return ref_list   # esim. näin
-    
-
+        return ref_list
 
     def delete_all_references(self):
         self._reference_repository.delete_all()  #tarvitaan etenkin testauksessa tyhjentämään file
 
 # tänne myöhemmin lisää toimintoja....
-
-
-
 references_service = ReferenceService()
-
-    
