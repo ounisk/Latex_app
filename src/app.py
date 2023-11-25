@@ -2,25 +2,36 @@ class App:
     def __init__(self, reference_services, io):
         self.reference_services = reference_services
         self.io = io
+        self.space = ""
 
     def run(self):
         self.io.write("Welcome to Latex app")
         while True:
-            command = self.io.read("Choose command (add or print): ")  # Lisää vaihtoehtoja myöhemmin
+            command = self.io.read(f"Choose command (add or print): {self.space:30}")  # Lisää vaihtoehtoja myöhemmin
 
             if not command:
                 break
 
             if command == "add":
-                ref_type = self.io.read("Choose reference type (book): ")
+                ref_type = self.io.read(f"Choose reference type (book, article or inproceedings): {self.space:5}")
 
                 if not ref_type:
                     break
 
                 if ref_type == "book":
-                    (author, name, year, publisher) = self._read_book()
+                    (author, title, year, publisher) = self._read_book()
                 
-                    self.reference_services.create_ref(author, name, year, publisher)
+                    self.reference_services.create_ref(author, title, year, publisher)
+
+                    self.io.write("Reference added")
+
+                elif ref_type == "article":
+                    (author, title, journal, year) = self._read_article()
+
+                    self.io.write("Reference added")
+
+                elif ref_type == "inproceedings":
+                    (author, title, book_title, publisher, year) = self._read_inproceedings()
 
                     self.io.write("Reference added")
 
@@ -31,11 +42,26 @@ class App:
 
 
     def _read_book(self):
-        author = self.io.read("Add author: ")
-        name = self.io.read("Add title: ")
-        year = self.io.read("Add publication date: ")
-        publisher = self.io.read("Add publisher: ")
+        author = self.io.read(f"Add author: {self.space:49}")
+        title = self.io.read(f"Add title: {self.space:50}")
+        year = self.io.read(f"Add publication date: {self.space:39}")
+        publisher = self.io.read(f"Add publisher: {self.space:46}")
 
-        return (author, name, year, publisher)
+        return (author, title, year, publisher)
     
-    # Tänne muiden viitetyyppien lukeminen
+    def _read_article(self):
+        author = self.io.read(f"Add author: {self.space:49}")
+        title = self.io.read(f"Add title: {self.space:50}")
+        journal = self.io.read(f"Add journal: {self.space:48}")
+        year = self.io.read(f"Add publication date: {self.space:39}")
+
+        return (author, title, journal, year)
+
+    def _read_inproceedings(self):
+        author = self.io.read(f"Add author: {self.space:49}")
+        title = self.io.read(f"Add title: {self.space:50}")
+        book_title = self.io.read(f"Add book title: {self.space:45}")
+        publisher = self.io.read(f"Add publisher: {self.space:46}")
+        year = self.io.read(f"Add publication date: {self.space:39}")
+
+        return (author, title, book_title, publisher, year)
