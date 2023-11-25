@@ -1,5 +1,5 @@
+from pathlib import Path
 from entities.book import Book
-from pathlib import Path #
 from config import ALIST_FILE_PATH
 
 
@@ -11,8 +11,7 @@ class ReferenceRepository:
 
 
     def _check_file(self):
-        Path(self._file_path).touch()    
-
+        Path(self._file_path).touch()
 
     def _get_list(self):
         references = []
@@ -37,7 +36,7 @@ class ReferenceRepository:
 
     def find_all(self):
         #return self._references
-        return self._get_list() 
+        return self._get_list()
 
 
     def create(self, book):
@@ -61,8 +60,8 @@ class ReferenceRepository:
         with open(self._file_path, "w", encoding="utf-8") as file:
             for ref in references:
 
-                row = f"{ref.author};{ref.name};{ref.year};{ref.publisher}" #fileen lisätty tieto tulee str:nä
+                row = f"{ref.author};{ref.name};{ref.year};{ref.publisher}"
                 file.write(row+"\n")
-
+             #fileen lisätty tieto tulee str:nä
 
 reference_repository = ReferenceRepository(ALIST_FILE_PATH)
