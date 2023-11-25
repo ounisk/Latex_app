@@ -6,3 +6,6 @@ htmlcov
 log.html
 output.xml
 report.html
+data/references.csv
+data/test-references.csv
+data/data.csv
