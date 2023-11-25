@@ -37,8 +37,8 @@ class ReferenceRepository:
     def find_all(self):
         #return self._references
         return self._get_list()
-    
-    
+
+
     def create(self, book):
         references = self.find_all()
         references.append(book)
