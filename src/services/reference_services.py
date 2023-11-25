@@ -1,8 +1,9 @@
 from entities.book import Book
+from repositories.reference_repository import (reference_repository as default_reference_repository)
 
 
 class ReferenceService:
-    def __init__(self, reference_repository):
+    def __init__(self, reference_repository = default_reference_repository):
         self._reference_repository = reference_repository
 
 # käyttöliittymästä kutsu jossa (aut, name, yr, publ.)
@@ -13,15 +14,20 @@ class ReferenceService:
 
         return reference
 
+
     def print_refs(self):
         ref_list = self._reference_repository.find_all()
-
-
-        #for ref in ref_list:
-        #    print(ref)    # Tänne return(ref_list) ja
-        # printtaus app.py:n puolella - tehtävien eriyttäminen jne.
         return ref_list   # esim. näin
+    
+
+
+    def delete_all_references(self):
+        self._reference_repository.delete_all()  #tarvitaan etenkin testauksessa tyhjentämään file
+
+# tänne myöhemmin lisää toimintoja....
 
 
 
-    # tänne myöhemmin lisää toimintoja....
+references_service = ReferenceService()
+
+    
