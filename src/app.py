@@ -21,22 +21,27 @@ class App:
                 if ref_type == "book":
                     (author, title, year, publisher) = self._read_book()
                 
-                    self.reference_services.create_ref(author, title, year, publisher)
+                    self.reference_services.create_ref_book(author, title, year, publisher)
 
                     self.io.write("Reference added")
 
                 elif ref_type == "article":
                     (author, title, journal, year) = self._read_article()
 
+                    self.reference_services.create_ref_article(author, title, journal, year)
+
                     self.io.write("Reference added")
 
                 elif ref_type == "inproceedings":
                     (author, title, book_title, publisher, year) = self._read_inproceedings()
 
+                    self.reference_services.create_ref_inpro(author, title, book_title, publisher, year)
+
                     self.io.write("Reference added")
 
             elif command == "print":
-                ref_list = self.reference_services.print_refs()         
+                ref_list = self.reference_services.print_refs()
+                print("***VIITTEET***")      
                 for ref in ref_list:   #siirretty tulostus tänne services:in puolelta
                    print(ref)
 
