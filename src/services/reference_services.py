@@ -1,4 +1,4 @@
-from entities.book import Book
+from entities.book import Book, Article, InProceedings
 from repositories.reference_repository import (reference_repository as default_reference_repository)
 
 
@@ -7,13 +7,29 @@ class ReferenceService:
         self._reference_repository = reference_repository
 
 # käyttöliittymästä kutsu jossa (aut, name, yr, publ.)
-    def create_ref(self, author, name, year, publisher):
-        book = Book(author, name, year, publisher)
+    def create_ref_book(self, author, name, year, publisher):
+        ref_type = "book"
+        book = Book(ref_type, author, name, year, publisher)
 
         reference = self._reference_repository.create(book)
 
         return reference
 
+    def create_ref_article(self, author, title, journal, year):
+        ref_type = "article"
+        article = Article(ref_type, author, title, journal, year)
+
+        reference = self._reference_repository.create(article)
+
+        return reference
+    
+    def create_ref_inpro(self, author, title, book_title, publisher, year):
+        ref_type = "inproceedings"
+        inpro = InProceedings(ref_type, author, title, book_title, publisher, year)
+
+        reference = self._reference_repository.create(inpro)
+
+        return reference
 
     def print_refs(self):
         ref_list = self._reference_repository.find_all()
