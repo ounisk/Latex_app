@@ -1,12 +1,13 @@
 from pathlib import Path
 from entities.book import Book, Article, InProceedings
-from config import ALIST_FILE_PATH
+from config import ALIST_FILE_PATH, BIB_FILE_PATH
 
 
 
 class ReferenceRepository:
-    def __init__(self, file_path):
+    def __init__(self, file_path, bib_file_path):
         self._file_path = file_path
+        self._bib_file_path = bib_file_path
         #self._references = []
 
 
@@ -22,33 +23,36 @@ class ReferenceRepository:
                 row = row.replace("\n", "")
                 parts = row.split(";")
 
-                if parts[0]== "book": #
-                    ref_type = parts[0]   #
-                    author = parts[1]
-                    name = parts[2]
-                    year = parts[3]
-                    publisher = parts[4]
-
-                    references.append(Book(ref_type, author, name, year, publisher))
-
-                if parts[0] == "article":
-                    ref_type = parts[0]   #
-                    author = parts[1]
-                    title = parts[2]
-                    journal = parts[3]
+                if parts[1]== "book": #
+                    bib_ref = parts[0]
+                    ref_type = parts[1]   #
+                    author = parts[2]
+                    name = parts[3]
                     year = parts[4]
+                    publisher = parts[5]
 
-                    references.append(Article(ref_type, author, title, journal, year))
+                    references.append(Book(bib_ref, ref_type, author, name, year, publisher))
 
-                if parts[0] == "inproceedings":
-                    ref_type = parts[0]
-                    author = parts[1]
-                    title = parts[2]
-                    book_title = parts[3]
-                    publisher = parts[4]
+                if parts[1] == "article":
+                    bib_ref = parts[0]
+                    ref_type = parts[1]   #
+                    author = parts[2]
+                    title = parts[3]
+                    journal = parts[4]
                     year = parts[5]
 
-                    references.append(InProceedings(ref_type, author, title, book_title, publisher, year))
+                    references.append(Article(bib_ref, ref_type, author, title, journal, year))
+
+                if parts[1] == "inproceedings":
+                    bib_ref = parts[0]
+                    ref_type = parts[1]
+                    author = parts[2]
+                    title = parts[3]
+                    book_title = parts[4]
+                    publisher = parts[5]
+                    year = parts[6]
+
+                    references.append(InProceedings(bib_ref, ref_type, author, title, book_title, publisher, year))
         return references
 
 
@@ -78,15 +82,79 @@ class ReferenceRepository:
         with open(self._file_path, "w", encoding="utf-8") as file:
             for ref in references:
                 if ref.ref_type == "book":
-                    row = f"{ref.ref_type};{ref.author};{ref.name};{ref.year};{ref.publisher}"
+                    row = f"{ref.bib_ref};{ref.ref_type};{ref.author};{ref.name};{ref.year};{ref.publisher}"
                     file.write(row+"\n")
                 if ref.ref_type == "article":
-                    row = f"{ref.ref_type};{ref.author};{ref.title};{ref.journal};{ref.year}"
+                    row = f"{ref.bib_ref};{ref.ref_type};{ref.author};{ref.title};{ref.journal};{ref.year}"
                     file.write(row+"\n")
                 if ref.ref_type == "inproceedings":
-                    row = f"{ref.ref_type};{ref.author};{ref.title};{ref.book_title};{ref.publisher};{ref.year}"
+                    row = f"{ref.bib_ref};{ref.ref_type};{ref.author};{ref.title};{ref.book_title};{ref.publisher};{ref.year}"
                     file.write(row+"\n")
 
-             #fileen lisätty tieto tulee str:nä
+    
+    def create_file_in_bib(self):
+        with open(self._file_path, encoding="utf-8") as file_csv:   #avataan csv-file
 
-reference_repository = ReferenceRepository(ALIST_FILE_PATH)
+            with open(self._bib_file_path, "w") as file_bib:    #avataan bib-file kirjoittamista varten
+                for row in file_csv:
+                    row = row.replace("\n", "")
+                    ref_parts = row.split(";")
+
+                    if ref_parts[1]== "book":
+                        bib_ref = ref_parts[0]
+                        type = ref_parts[1]
+                        author = ref_parts[2]
+                        title = ref_parts[3]
+                        year = ref_parts[4]
+                        publisher = ref_parts[5]
+
+                        #bibtex_ref = f"@book{{{bib_ref},\n"f" author = {{{author}}},\n" \
+                        bibtex_ref = f"@{type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
+                        f"  title =  {{{title}}},\n"\
+                        f"  year =  {{{year}}},\n"\
+                        f"  publisher =  {{{publisher}}},\n"\
+                        f"}}\n"
+
+                        file_bib.write(bibtex_ref+"\n")
+
+                    if ref_parts[1]== "article":
+                        bib_ref = ref_parts[0]
+                        type = ref_parts[1]
+                        author = ref_parts[2]
+                        title = ref_parts[3]
+                        journal = ref_parts[4]
+                        year = ref_parts[5]
+
+                        #bibtex_ref = f"@book{{{bib_ref},\n"f" author = {{{author}}},\n" \
+                        bibtex_ref = f"@{type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
+                        f"  title =  {{{title}}},\n"\
+                        f"  journal =  {{{journal}}},\n"\
+                        f"  year =  {{{year}}},\n"\
+                        f"}}\n"
+
+                        file_bib.write(bibtex_ref+"\n")
+                    
+                    if ref_parts[1]== "inproceedings":
+                        bib_ref = ref_parts[0]
+                        type = ref_parts[1]
+                        author = ref_parts[2]
+                        title = ref_parts[3]
+                        book_title = ref_parts[4]
+                        publisher = ref_parts[5]
+                        year = ref_parts[6]
+
+                        #bibtex_ref = f"@book{{{bib_ref},\n"f" author = {{{author}}},\n" \
+                        bibtex_ref = f"@{type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
+                        f"  title =  {{{title}}},\n"\
+                        f"  book title =  {{{book_title}}},\n"\
+                        f"  publisher =  {{{publisher}}},\n"\
+                        f"  year =  {{{year}}},\n"\
+                        f"}}\n"
+
+                        file_bib.write(bibtex_ref+"\n")
+
+
+
+
+
+reference_repository = ReferenceRepository(ALIST_FILE_PATH, BIB_FILE_PATH)
