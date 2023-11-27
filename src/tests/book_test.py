@@ -9,7 +9,7 @@ from entities.book import Book
 
 class TestBook(unittest.TestCase):
     def setUp(self):
-        self.book = Book('book', 'Kalle', 'kertomus', 2000, 'kustantaja')
+        self.book = Book('Kal00', 'book', 'Kalle', 'kertomus', 2000, 'kustantaja')
 
     def test_right_print(self):
         output = f"  Type: book\n  Author: Kalle\n  Title: kertomus\
