@@ -78,3 +78,17 @@ class App:
         bib_ref = self.io.read(f"Add short bib-reference: {self.space:46}")
 
         return (bib_ref, author, title, book_title, publisher, year)
+
+
+# Ellan korjaukset refaktorointiin, jotka jäivät conflictiin:
+#    def _read_reference(self, fields):
+#        return (self.io.read(f'Add {field}') for field in fields)
+
+#    def _read_book(self):
+#        return self._read_reference(['author','title','year','publisher'])
+    
+#    def _read_article(self):
+#        return self._read_reference(['author','title','journal','year'])
+
+#    def _read_inproceedings(self):
+#        return self._read_reference(['author','title','book_title','publisher','year'])
