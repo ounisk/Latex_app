@@ -16,7 +16,7 @@ class App:
             if command == "add":
                 ref_type = self.io.read(f"Choose reference type (book, article or inproceedings):")
                 
-                if ref_type in ["book", "article", "proceedings"]:
+                if ref_type in ["book", "article", "inproceedings"]:
                     fields = self.read_ref[ref_type]()
                     self.reference_services.create_reference(ref_type, fields)
                     self.io.write("Reference added")
