@@ -2,6 +2,8 @@ class App:
     def __init__(self, reference_services, io):
         self.reference_services = reference_services
         self.io = io
+        self.read_ref = {"book": self._read_book, "article": self._read_article
+                  , "inproceedings": self._read_inproceedings}
 
     def run(self):
         self.io.write("Welcome to Latex app")
@@ -13,29 +15,10 @@ class App:
 
             if command == "add":
                 ref_type = self.io.read(f"Choose reference type (book, article or inproceedings):")
-
-                if not ref_type:
-                    break
-
-                if ref_type == "book":
-                    (bib_ref, author, title, year, publisher) = self._read_book()
                 
-                    self.reference_services.create_ref_book(bib_ref, author, title, year, publisher)
-
-                    self.io.write("Reference added")
-
-                elif ref_type == "article":
-                    (bib_ref, author, title, journal, year) = self._read_article()
-
-                    self.reference_services.create_ref_article(bib_ref, author, title, journal, year)
-
-                    self.io.write("Reference added")
-
-                elif ref_type == "inproceedings":
-                    (bib_ref, author, title, book_title, publisher, year) = self._read_inproceedings()
-
-                    self.reference_services.create_ref_inpro(bib_ref, author, title, book_title, publisher, year)
-
+                if ref_type in ["book", "article", "proceedings"]:
+                    fields = self.read_ref[ref_type]()
+                    self.reference_services.create_reference(ref_type, fields)
                     self.io.write("Reference added")
 
             elif command == "print":
@@ -48,47 +31,17 @@ class App:
                 self.reference_services.create_bib_format_file()
                 print(".bib file has been created")
 
-
-
+    def _read_reference(self, fields):
+        return [self.io.read(f'Add {field}') for field in fields + ['bib_ref']]
 
     def _read_book(self):
-        author = self.io.read(f"Add author: {self.space:49}")
-        title = self.io.read(f"Add title: {self.space:50}")
-        year = self.io.read(f"Add publication date: {self.space:39}")
-        publisher = self.io.read(f"Add publisher: {self.space:46}")
-        bib_ref = self.io.read(f"Add short bib-reference: {self.space:46}")
-
-        return (bib_ref, author, title, year, publisher)
+       return self._read_reference(['author','title','year','publisher'])
     
     def _read_article(self):
-        author = self.io.read(f"Add author: {self.space:49}")
-        title = self.io.read(f"Add title: {self.space:50}")
-        journal = self.io.read(f"Add journal: {self.space:48}")
-        year = self.io.read(f"Add publication date: {self.space:39}")
-        bib_ref = self.io.read(f"Add short bib-reference: {self.space:46}")
-
-        return (bib_ref, author, title, journal, year)
+        return self._read_reference(['author','title','journal','year'])
 
     def _read_inproceedings(self):
-        author = self.io.read(f"Add author: {self.space:49}")
-        title = self.io.read(f"Add title: {self.space:50}")
-        book_title = self.io.read(f"Add book title: {self.space:45}")
-        publisher = self.io.read(f"Add publisher: {self.space:46}")
-        year = self.io.read(f"Add publication date: {self.space:39}")
-        bib_ref = self.io.read(f"Add short bib-reference: {self.space:46}")
-
-        return (bib_ref, author, title, book_title, publisher, year)
+       return self._read_reference(['author','title','book_title','publisher','year'])
 
 
-# Ellan korjaukset refaktorointiin, jotka jäivät conflictiin:
-#    def _read_reference(self, fields):
-#        return (self.io.read(f'Add {field}') for field in fields)
 
-#    def _read_book(self):
-#        return self._read_reference(['author','title','year','publisher'])
-    
-#    def _read_article(self):
-#        return self._read_reference(['author','title','journal','year'])
-
-#    def _read_inproceedings(self):
-#        return self._read_reference(['author','title','book_title','publisher','year'])

@@ -1,5 +1,5 @@
 class Book:
-    def __init__(self, bib_ref:str, ref_type:str, author:str, name:str, year:int, publisher:str):
+    def __init__(self, ref_type:str, author:str, name:str, year:int, publisher:str, bib_ref:str):
         self.bib_ref = bib_ref
         self.ref_type = ref_type
         self.author = author
@@ -13,7 +13,7 @@ class Book:
 
 
 class Article:
-    def __init__(self, bib_ref:str, ref_type:str, author:str, title:str, journal:str, year:int):
+    def __init__(self, ref_type:str, author:str, title:str, journal:str, year:int, bib_ref:str):
         self.bib_ref = bib_ref
         self.ref_type = ref_type
         self.author = author
@@ -26,7 +26,7 @@ class Article:
             \n  Journal: {self.journal}\n  Year: {self.year}\n"
 
 class InProceedings:
-    def __init__(self, bib_ref:str, ref_type:str, author:str, title:str, book_title:str, publisher:str, year:int):
+    def __init__(self, ref_type:str, author:str, title:str, book_title:str, publisher:str, year:int, bib_ref:str):
         self.bib_ref = bib_ref
         self.ref_type = ref_type
         self.author = author
