@@ -2,18 +2,17 @@ class App:
     def __init__(self, reference_services, io):
         self.reference_services = reference_services
         self.io = io
-        self.space = ""
 
     def run(self):
         self.io.write("Welcome to Latex app")
         while True:
-            command = self.io.read(f"Choose command (add, print, create bib): {self.space:30}")  # Lisää vaihtoehtoja myöhemmin
+            command = self.io.read(f"Choose command (add, print, create bib):")  # Lisää vaihtoehtoja myöhemmin
 
             if not command:
                 break
 
             if command == "add":
-                ref_type = self.io.read(f"Choose reference type (book, article or inproceedings): {self.space:5}")
+                ref_type = self.io.read(f"Choose reference type (book, article or inproceedings):")
 
                 if not ref_type:
                     break
