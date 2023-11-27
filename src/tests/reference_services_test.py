@@ -12,7 +12,7 @@ class TestReferenceService(unittest.TestCase):
 
     def test_adding_book_reference_is_on_the_list(self):
         self.reference_service.delete_all_references()
-        self.reference_service.create_ref_book("Waltari", "Sinuhe", "1900", "Otava")  #huom! vuosi pitää laitaa str-muodossa, koska on filessä niin
+        self.reference_service.create_ref_book("Wal00", "Waltari", "Sinuhe", "1900", "Otava")  #huom! vuosi pitää laitaa str-muodossa, koska on filessä niin
 
         references = self.reference_service.print_refs()
         self.assertEqual((references[0].author, references[0].name, references[0].year, references[0].publisher), ("Waltari", "Sinuhe", "1900", "Otava"))
