@@ -52,7 +52,8 @@ class ReferenceRepository:
                         book_title = parts[4]
                         publisher = parts[5]
                         year = parts[6]
-                        references.append(InProceedings(ref_type, author, title, book_title, publisher, year, bib_ref))
+                        references.append(InProceedings(ref_type, author, title, book_title,\
+                                                        publisher, year, bib_ref))
 
             return references
 
@@ -84,35 +85,38 @@ class ReferenceRepository:
             for ref in references:
                 row = ""
                 if ref.ref_type == "book":
-                    row = f"{ref.bib_ref};{ref.ref_type};{ref.author};{ref.name};{ref.year};{ref.publisher}"
+                    row = f"{ref.bib_ref};{ref.ref_type};{ref.author};\
+                        {ref.name};{ref.year};{ref.publisher}"
                 if ref.ref_type == "article":
-                    row = f"{ref.bib_ref};{ref.ref_type};{ref.author};{ref.title};{ref.journal};{ref.year}"
+                    row = f"{ref.bib_ref};{ref.ref_type};{ref.author};\
+                        {ref.title};{ref.journal};{ref.year}"
                 if ref.ref_type == "inproceedings":
-                    row = f"{ref.bib_ref};{ref.ref_type};{ref.author};{ref.title};{ref.book_title};{ref.publisher};{ref.year}"
+                    row = f"{ref.bib_ref};{ref.ref_type};{ref.author};{ref.title};\
+                        {ref.book_title};{ref.publisher};{ref.year}"
                 file.write(row+"\n")
-            
 
-    
+
     def create_file_in_bib(self):
         with open(self._file_path, encoding="utf-8") as file_csv:   #avataan csv-file
 
-            with open(self._bib_file_path, "w") as file_bib:    #avataan bib-file kirjoittamista varten
+            with open(self._bib_file_path, "w") as file_bib: #avataan bib-file kirjoittamista varten
                 for row in file_csv:
                     row = row.replace("\n", "")
                     ref_parts = row.split(";")
 
-                    
+
                     if len(ref_parts) >= 6:
                         if ref_parts[1]== "book":
                             bib_ref = ref_parts[0]
-                            type = ref_parts[1]
+                            ref_type = ref_parts[1]
                             author = ref_parts[2]
                             title = ref_parts[3]
                             year = ref_parts[4]
                             publisher = ref_parts[5]
 
                             #bibtex_ref = f"@book{{{bib_ref},\n"f" author = {{{author}}},\n" \
-                            bibtex_ref = f"@{type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
+                            bibtex_ref = \
+                                f"@{ref_type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
                             f"  title =  {{{title}}},\n"\
                             f"  year =  {{{year}}},\n"\
                             f"  publisher =  {{{publisher}}},\n"\
@@ -122,24 +126,24 @@ class ReferenceRepository:
 
                         if ref_parts[1]== "article":
                             bib_ref = ref_parts[0]
-                            type = ref_parts[1]
+                            ref_type = ref_parts[1]
                             author = ref_parts[2]
                             title = ref_parts[3]
                             journal = ref_parts[4]
                             year = ref_parts[5]
 
                             #bibtex_ref = f"@book{{{bib_ref},\n"f" author = {{{author}}},\n" \
-                            bibtex_ref = f"@{type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
+                            bibtex_ref = f"@{ref_type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
                             f"  title =  {{{title}}},\n"\
                             f"  journal =  {{{journal}}},\n"\
                             f"  year =  {{{year}}},\n"\
                             f"}}\n"
 
                             file_bib.write(bibtex_ref+"\n")
-                    
+
                         if ref_parts[1]== "inproceedings":
                             bib_ref = ref_parts[0]
-                            type = ref_parts[1]
+                            ref_type = ref_parts[1]
                             author = ref_parts[2]
                             title = ref_parts[3]
                             book_title = ref_parts[4]
@@ -147,7 +151,7 @@ class ReferenceRepository:
                             year = ref_parts[6]
 
                             #bibtex_ref = f"@book{{{bib_ref},\n"f" author = {{{author}}},\n" \
-                            bibtex_ref = f"@{type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
+                            bibtex_ref = f"@{ref_type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
                             f"  title =  {{{title}}},\n"\
                             f"  book title =  {{{book_title}}},\n"\
                             f"  publisher =  {{{publisher}}},\n"\
