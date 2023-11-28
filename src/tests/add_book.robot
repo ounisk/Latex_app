@@ -1,13 +1,12 @@
 *** Settings ***
 Resource  resource.robot
-Test Setup  Input Add Command and Add Book
+Test Setup  Input Add Command To Add Book
 
 *** Test Cases ***
 Add Book Successfully
-    Input References  book  kalle  otsikko  2000  otava  kalle2000
+    Input Book Reference  book  kalle  otsikko  2000  otava  kalle2000
     Output Should Contain  Reference type book added
 
 *** Keywords ***
-Input Add Command and Add Book
+Input Add Command To Add Book
     Input Add Command  
-   
