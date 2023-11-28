@@ -18,3 +18,9 @@ class TestReferenceService(unittest.TestCase):
         self.assertEqual((references[0].author, references[0].name, references[0].year, references[0].publisher), ("Waltari", "Sinuhe", "1900", "Otava"))
 
 #Lisää testit "lisää artikkeli", "lisää inproceedings"
+
+    #def test_creating_bib_file(self): Tämä testi ei toimi - Ehkä voidaan tehdä robot testi tämän sijaan.
+    #    self.reference_service.delete_all_references()
+    #    self.reference_service.create_reference("book", ["Virta", "Aakkoset", "1833", "Otava", "Virta33"])
+    #    bib_file = self.reference_service.create_bib_format_file()
+    #    self.assertIsNot(bib_file, None)
