@@ -32,7 +32,7 @@ class ReferenceRepository:
                         year = parts[4]
                         publisher = parts[5]
 
-                        references.append(Book(bib_ref, ref_type, author, name, year, publisher))
+                        references.append(Book(ref_type, author, name, year, publisher, bib_ref))
 
                     if parts[1] == "article":
                         bib_ref = parts[0]
@@ -42,7 +42,7 @@ class ReferenceRepository:
                         journal = parts[4]
                         year = parts[5]
 
-                        references.append(Article(bib_ref, ref_type, author, title, journal, year))
+                        references.append(Article(ref_type, author, title, journal, year, bib_ref))
 
                     if parts[1] == "inproceedings":
                         bib_ref = parts[0]
@@ -52,8 +52,8 @@ class ReferenceRepository:
                         book_title = parts[4]
                         publisher = parts[5]
                         year = parts[6]
+                        references.append(InProceedings(ref_type, author, title, book_title, publisher, year, bib_ref))
 
-                        references.append(InProceedings(bib_ref, ref_type, author, title, book_title, publisher, year))
             return references
 
 
