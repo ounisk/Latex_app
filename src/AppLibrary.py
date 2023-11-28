@@ -10,6 +10,10 @@ class AppLibrary:
         self._io = StubIO()
         self.dirname = os.path.dirname(__file__)
         self.robot_file_name = 'robot_references.csv'
+        #ohje jos testaa .bib filen luontia, niin luo tähän:
+        #self.robot_bib_file_name = 'robot_references.bib'
+        #self.robot_bib_file_path = 'os.path.join(self.dirname, '..', 'data', self.robot_bib_file_name)
+        # ja muuta ao. näin: RefeferencesRepository(self.robot_file_path, self.robot_bib_file_path)
         self.robot_file_path = os.path.join(self.dirname, '..', 'data', self.robot_file_name)
         self._reference_repository = ReferenceRepository(self.robot_file_path, self.robot_file_path)
         self._reference_service = ReferenceService(self._reference_repository)
