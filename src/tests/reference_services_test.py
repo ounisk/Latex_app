@@ -1,6 +1,8 @@
 import unittest
 from services.reference_services import ReferenceService
-from entities.book import Book, Article, InProceedings
+from entities.book import Book
+from entities.article import Article
+from entities.inpro import InProceedings
 #from repositories.reference_repository import ReferenceRepository
 
 
