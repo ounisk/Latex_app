@@ -6,12 +6,12 @@ class ReferenceService:
     def __init__(self, reference_repository = default_reference_repository):
         self._reference_repository = reference_repository
 
-    def create_reference(self, type, fields):
-        if type == 'book':
+    def create_reference(self, ref_type, fields):
+        if ref_type == 'book':
             ref = Book(type, *fields)
-        elif type == 'article':
+        elif ref_type == 'article':
             ref = Article(type, *fields)
-        elif type == 'inproceedings':
+        elif ref_type == 'inproceedings':
             ref = InProceedings(type, *fields)
         return self._reference_repository.create(ref)
 
@@ -23,7 +23,7 @@ class ReferenceService:
 
     def create_bib_format_file(self):
         bib_file = self._reference_repository.create_file_in_bib()
-        return bib_file    
+        return bib_file
 
 # tänne myöhemmin lisää toimintoja....
 references_service = ReferenceService()
