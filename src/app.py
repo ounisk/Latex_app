@@ -7,27 +7,35 @@ class App:
 
     def run(self):
         self.io.write("Welcome to Latex app")
+        # Different ways to choose the reference type, lower case.
+        reference_type_map = {'b': 'book', 'book': 'book', 
+                              'a': 'article', 'article': 'article', 
+                              'i': 'inproceedings', 'inproceedings': 'inproceedings'}
+
         while True:
-            command = self.io.read(f"Choose command (add, print, create bib):")  # Lisää vaihtoehtoja myöhemmin
+            command = self.io.read(f"Choose command (A)dd, (P)rint, (C)reate bib:").lower()  # Lisää vaihtoehtoja myöhemmin
 
             if not command:
                 break
 
-            if command == "add":
-                ref_type = self.io.read(f"Choose reference type (book, article or inproceedings):")
-                
-                if ref_type in ["book", "article", "inproceedings"]:
-                    fields = self.read_ref[ref_type]()
-                    self.reference_services.create_reference(ref_type, fields)
-                    self.io.write("Reference added")
+            if command in ["a", "add"]:
+                ref_type_input = self.io.read(f"Choose reference type (B)ook, (A)rticle or (I)nproceedings):").lower()
+                ref_type = reference_type_map.get(ref_type_input)
+    
+                if ref_type:
+                        fields = self.read_ref[ref_type]()
+                        self.reference_services.create_reference(ref_type, fields)
+                        self.io.write(f"Reference type {ref_type} added")
+                else:
+                    self.io.write("Invalid reference type.")
 
-            elif command == "print":
+            elif command in ["p", "print"]:
                 ref_list = self.reference_services.print_refs()
                 print("***REFERENCES***")      
                 for ref in ref_list:   #siirretty tulostus tänne services:in puolelta
                    print(ref)
 
-            elif command == "create bib":
+            elif command in ["c", "create bib"]:
                 self.reference_services.create_bib_format_file()
                 print(".bib file has been created")
 
