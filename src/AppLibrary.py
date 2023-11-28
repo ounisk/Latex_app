@@ -1,3 +1,4 @@
+import os
 from stub_io import StubIO
 from repositories.reference_repository import ReferenceRepository
 from services.reference_services import ReferenceService
@@ -7,8 +8,12 @@ from app import App
 class AppLibrary:
     def __init__(self):
         self._io = StubIO()
-        self._reference_repository = ReferenceRepository()
+        self.dirname = os.path.dirname(__file__)
+        self.robot_file_name = 'robot_references.csv'
+        self.robot_file_path = os.path.join(self.dirname, '..', 'data', self.robot_file_name)
+        self._reference_repository = ReferenceRepository(self.robot_file_path, self.robot_file_path)
         self._reference_service = ReferenceService(self._reference_repository)
+
 
         self._app = App(
             self._reference_service,
@@ -30,4 +35,5 @@ class AppLibrary:
         self._app.run()
 
     def create_reference(self, type, fields):
-        self._reference_service.create_user(type, fields)
+    # Assuming create_user is a method of ReferenceService
+        self._reference_service.create_user(type, *fields)
