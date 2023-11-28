@@ -1,8 +1,8 @@
 from pathlib import Path
-from entities.book import Book, Article, InProceedings
+from entities.book import Book
+from entities.article import Article
+from entities.inpro import InProceedings
 from config import ALIST_FILE_PATH, BIB_FILE_PATH
-
-
 
 class ReferenceRepository:
     def __init__(self, file_path, bib_file_path):

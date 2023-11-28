@@ -1,4 +1,6 @@
-from entities.book import Book, Article, InProceedings
+from entities.book import Book
+from entities.article import Article
+from entities.inpro import InProceedings
 from repositories.reference_repository import (reference_repository as default_reference_repository)
 
 
