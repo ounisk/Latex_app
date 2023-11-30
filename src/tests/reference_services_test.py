@@ -19,7 +19,6 @@ class TestReferenceService(unittest.TestCase):
         self.assertIsInstance(new_ref, Book)
         self.assertEqual(new_ref.author, 'Author Name')
 
-    # Dummy, since not yet properly defined
     def test_create_reference_article(self):
         fields = ['Author Name', 'Article Title', 'Journal', '2023', '']
         self.reference_service.create_reference('article', fields)
@@ -29,7 +28,6 @@ class TestReferenceService(unittest.TestCase):
         self.assertIsInstance(new_ref, Article)
         self.assertEqual(new_ref.author, 'Author Name')
 
-    # Dummy, since not yet properly defined
     def test_create_reference_inproceedings(self):
         fields = ['Author Name', 'Title', 'Book Title', 'Publisher Name', '2023', '']
         self.reference_service.create_reference('inproceedings', fields)
@@ -40,6 +38,7 @@ class TestReferenceService(unittest.TestCase):
         self.assertEqual(new_ref.author, 'Author Name')
 
     # Copy similar to other types
+    # Also need to test for faulty input "refence type = foobar"
 
 if __name__ == '__main__':
     unittest.main()
