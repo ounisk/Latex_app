@@ -81,7 +81,7 @@ class ReferenceRepository:
     def _update(self, references):   #päivitää filen uusilla tiedoilla
         self._check_file()
 
-        with open(self._file_path, "a", encoding="utf-8") as file:
+        with open(self._file_path, "w", encoding="utf-8") as file:
             for ref in references:
                 row = ""
                 if ref.ref_type == "book":

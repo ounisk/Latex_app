@@ -10,11 +10,11 @@ class ReferenceService:
 
     def create_reference(self, ref_type, fields):
         if ref_type == 'book':
-            ref = Book(type, *fields)
+            ref = Book(ref_type, *fields)
         elif ref_type == 'article':
-            ref = Article(type, *fields)
+            ref = Article(ref_type, *fields)
         elif ref_type == 'inproceedings':
-            ref = InProceedings(type, *fields)
+            ref = InProceedings(ref_type, *fields)
         return self._reference_repository.create(ref)
 
     def print_refs(self):
