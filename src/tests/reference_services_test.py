@@ -1,28 +1,25 @@
 import unittest
+from unittest.mock import Mock
 from services.reference_services import ReferenceService
 from entities.book import Book
 from entities.article import Article
 from entities.inpro import InProceedings
-#from repositories.reference_repository import ReferenceRepository
 
-
-class TestReferenceService(unittest.TestCase): 
+class TestReferenceService(unittest.TestCase):
     def setUp(self):
-        self.reference_service = ReferenceService() #(ReferenceRepository())
-        #self.ref_book1 = Book("Waltari", "Sinuhe", "1900", "Otava")
+        self.mock_reference_repository = Mock()
+        self.reference_service = ReferenceService(self.mock_reference_repository)
 
-# Also broken, index out of range - something has changed and this does not create correct reference for test
-#    def test_adding_book_reference_is_on_the_list(self):
-#        self.reference_service.delete_all_references()
-#        self.reference_service.create_reference("book", ["Waltari", "Sinuhe", "1900", "Otava", "Wal00"])
+    def test_create_reference_book(self):
+        fields = ['Author Name', 'Book Title', '2023', 'Publisher Name', '']
+        self.reference_service.create_reference('book', fields)
 
-#        references = self.reference_service.print_refs()
-#        self.assertEqual((references[0].author, references[0].name, references[0].year, references[0].publisher), ("Waltari", "Sinuhe", "1900", "Otava"))
+        self.mock_reference_repository.create.assert_called_once()
+        new_ref = self.mock_reference_repository.create.call_args[0][0]
+        self.assertIsInstance(new_ref, Book)
+        self.assertEqual(new_ref.author, 'Author Name')
 
-#Lisää testit "lisää artikkeli", "lisää inproceedings"
+    # Copy similar to other types
 
-    #def test_creating_bib_file(self): Tämä testi ei toimi - Ehkä voidaan tehdä robot testi tämän sijaan.
-    #    self.reference_service.delete_all_references()
-    #    self.reference_service.create_reference("book", ["Virta", "Aakkoset", "1833", "Otava", "Virta33"])
-    #    bib_file = self.reference_service.create_bib_format_file()
-    #    self.assertIsNot(bib_file, None)
+if __name__ == '__main__':
+    unittest.main()
