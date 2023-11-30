@@ -3,7 +3,7 @@ source = src
 omit = 
 	src/**/__init__.py
 	src/tests/**
-	serc/config.py
+	src/config.py
 	src/index.py
 	src/console_io.py
 	src/stub_io.py
