@@ -14,8 +14,9 @@
 ### Testing
 - Unit tests
 - Tests are automated where possible
+- Robot framework testing started
 ### Documentation
-- Code commented
+- Code commented reasonably well
 - User manual up to date
 ### Integration
 - User story integrated into main codebase (Trunk)
