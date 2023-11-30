@@ -19,6 +19,26 @@ class TestReferenceService(unittest.TestCase):
         self.assertIsInstance(new_ref, Book)
         self.assertEqual(new_ref.author, 'Author Name')
 
+    # Dummy, since not yet properly defined
+    def test_create_reference_article(self):
+        fields = ['Author Name', 'Article Title', 'Journal', '2023', '']
+        self.reference_service.create_reference('article', fields)
+
+        self.mock_reference_repository.create.assert_called_once()
+        new_ref = self.mock_reference_repository.create.call_args[0][0]
+        self.assertIsInstance(new_ref, Article)
+        self.assertEqual(new_ref.author, 'Author Name')
+
+    # Dummy, since not yet properly defined
+    def test_create_reference_inproceedings(self):
+        fields = ['Author Name', 'Title', 'Book Title', 'Publisher Name', '2023', '']
+        self.reference_service.create_reference('inproceedings', fields)
+
+        self.mock_reference_repository.create.assert_called_once()
+        new_ref = self.mock_reference_repository.create.call_args[0][0]
+        self.assertIsInstance(new_ref, InProceedings)
+        self.assertEqual(new_ref.author, 'Author Name')
+
     # Copy similar to other types
 
 if __name__ == '__main__':
