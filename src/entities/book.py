@@ -8,5 +8,10 @@ class Book:
         self.publisher = publisher
 
     def __str__(self):
-        return f"  Type: {self.ref_type}\n  Author: {self.author}\n  Title: {self.name}\
-            \n  Publication date: {self.year}\n  Publisher: {self.publisher}\n"
+        spacing = 10
+        ref_type = f"{'Type':>{spacing}}: {self.ref_type}"
+        author = f"{'Author':>{spacing}}: {self.author}"
+        name = f"{'Title':>{spacing}}: {self.name}"
+        publisher = f"{'Publisher':>{spacing}}: {self.publisher}"
+        year = f"{'Year':>{spacing}}: {self.year}"
+        return "\n".join([ref_type, author, name, publisher, year]) + "\n"

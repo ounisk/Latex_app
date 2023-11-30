@@ -85,14 +85,11 @@ class ReferenceRepository:
             for ref in references:
                 row = ""
                 if ref.ref_type == "book":
-                    row = f"{ref.bib_ref};{ref.ref_type};{ref.author};\
-                        {ref.name};{ref.year};{ref.publisher}"
+                    row = ";".join([ref.bib_ref, ref.ref_type, ref.author, ref.name, ref.year, ref.publisher])
                 if ref.ref_type == "article":
-                    row = f"{ref.bib_ref};{ref.ref_type};{ref.author};\
-                        {ref.title};{ref.journal};{ref.year}"
+                    row = ";".join([ref.bib_ref, ref.ref_type, ref.author, ref.title, ref.journal, ref.year])
                 if ref.ref_type == "inproceedings":
-                    row = f"{ref.bib_ref};{ref.ref_type};{ref.author};{ref.title};\
-                        {ref.book_title};{ref.publisher};{ref.year}"
+                    row = ";".join([ref.bib_ref, ref.ref_type, ref.author, ref.title, ref.book_title, ref.publisher, ref.year])
                 file.write(row+"\n")
 
 

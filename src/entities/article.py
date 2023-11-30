@@ -8,5 +8,10 @@ class Article:
         self.year = year
 
     def __str__(self):
-        return f"  Type: {self.ref_type}\n  Author: {self.author}\n  Title: {self.title}\
-            \n  Journal: {self.journal}\n  Year: {self.year}\n"
+        spacing = 10
+        ref_type = f"{'Type':>{spacing}}: {self.ref_type}"
+        author = f"{'Author':>{spacing}}: {self.author}"
+        title = f"{'Title':>{spacing}}: {self.title}"
+        journal = f"{'Journal':>{spacing}}: {self.journal}"
+        year = f"{'Year':>{spacing}}: {self.year}"
+        return "\n".join([ref_type, author, title, journal, year]) + "\n"

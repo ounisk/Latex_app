@@ -10,6 +10,11 @@ class InProceedings:
         self.year = year
 
     def __str__(self):
-        return f"  Type: {self.ref_type}\n  Author: {self.author}\n  \
-            Title: {self.title}\n  Book Title: {self.book_title}\
-            \n  Publisher: {self.publisher}\n  Year: {self.year}\n"
+        spacing = 10
+        ref_type = f"{'Type':>{spacing}}: {self.ref_type}"
+        author = f"{'Author':>{spacing}}: {self.author}"
+        title = f"{'Title':>{spacing}}: {self.title}"
+        book_title = f"{'Book title':>{spacing}}: {self.book_title}"
+        publisher = f"{'Publisher':>{spacing}}: {self.publisher}"
+        year = f"{'Year':>{spacing}}: {self.year}"
+        return "\n".join([ref_type, author, title, book_title, publisher, year]) + "\n"
