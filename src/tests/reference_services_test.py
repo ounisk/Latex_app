@@ -40,5 +40,3 @@ class TestReferenceService(unittest.TestCase):
     # Copy similar to other types
     # Also need to test for faulty input "refence type = foobar"
 
-if __name__ == '__main__':
-    unittest.main()
