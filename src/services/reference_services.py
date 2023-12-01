@@ -23,8 +23,8 @@ class ReferenceService:
     def delete_all_references(self):
         self._reference_repository.delete_all()  #tarvitaan etenkin testauksessa tyhjentämään file
 
-    def create_bib_format_file(self):
-        bib_file = self._reference_repository.create_file_in_bib()
+    def create_bib_format_file(self, filename):
+        bib_file = self._reference_repository.create_file_in_bib(filename)
         return bib_file
 
 # tänne myöhemmin lisää toimintoja....

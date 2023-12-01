@@ -1,17 +1,25 @@
+import re
+from config import BIB_FILENAME
+
+
 class App:
     def __init__(self, reference_services, io):
         self.reference_services = reference_services
         self.io = io
         self.read_ref = {"book": self._read_book, "article": self._read_article
                   , "inproceedings": self._read_inproceedings}
-
+    
+    # Should this function be in this file? 
+    def _is_valid_filename(self, filename):
+        return bool(re.match("^[A-Za-z0-9_.]+$", filename))
+    
     def run(self):
         self.io.write("\n\nWelcome to Latex app\n")
         # Different ways to choose the reference type, lower case.
         reference_type_map = {'b': 'book', 'book': 'book', 
                               'a': 'article', 'article': 'article', 
                               'i': 'inproceedings', 'inproceedings': 'inproceedings'}
-
+    
         while True:
             command = self.io.read(f"Choose command (A)dd, (P)rint, (C)reate bib:").lower()  # Lisää vaihtoehtoja myöhemmin
 
@@ -36,8 +44,17 @@ class App:
                    print(ref)
                 
             elif command in ["c", "create BibTeX file"]:
-                self.reference_services.create_bib_format_file()
-                print("Your BixTeX file has been created")
+                while True:
+                    default_filename = BIB_FILENAME
+                    filename_input = self.io.read(f"Enter filename for BibTeX file (default: {default_filename}):").strip()
+                    filename = filename_input if filename_input else BIB_FILENAME
+                    
+                    if self._is_valid_filename(filename):
+                        self.reference_services.create_bib_format_file(filename)
+                        self.io.write(f"Your BibTeX file '{filename}' has been created\n")
+                        break
+                    else:
+                        self.io.write("\nInvalid filename. Only letters, numbers, and underscores are allowed.")
 
     def _read_reference(self, fields):
         print("\n")

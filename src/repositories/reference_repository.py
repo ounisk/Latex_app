@@ -71,14 +71,11 @@ class ReferenceRepository:
         self._update(references)   #uuden kirjan jälkeen updatetaan file
         return book
 
-
     def delete_all(self):    #tyhjentää koko listan, hyödyksi esim. testaamisessa
         list_references = []
         self._update(list_references)
 
-
-
-    def _update(self, references):   #päivitää filen uusilla tiedoilla
+    def _update(self, references):   #päivittää filen uusilla tiedoilla
         self._check_file()
 
         with open(self._file_path, "w", encoding="utf-8") as file:
@@ -92,11 +89,11 @@ class ReferenceRepository:
                     row = ";".join([ref.bib_ref, ref.ref_type, ref.author, ref.title, ref.book_title, ref.publisher, ref.year])
                 file.write(row+"\n")
 
-
-    def create_file_in_bib(self):
+    def create_file_in_bib(self, filename):
+        full_bibfile_path = Path(self._bib_file_path, filename)
+        
         with open(self._file_path, encoding="utf-8") as file_csv:   #avataan csv-file
-
-            with open(self._bib_file_path, "w") as file_bib: #avataan bib-file kirjoittamista varten
+            with open(full_bibfile_path, "w") as file_bib: #avataan bib-file kirjoittamista varten
                 for row in file_csv:
                     row = row.replace("\n", "")
                     ref_parts = row.split(";")
