@@ -6,7 +6,7 @@ class App:
                   , "inproceedings": self._read_inproceedings}
 
     def run(self):
-        self.io.write("Welcome to Latex app")
+        self.io.write("\n\nWelcome to Latex app\n")
         # Different ways to choose the reference type, lower case.
         reference_type_map = {'b': 'book', 'book': 'book', 
                               'a': 'article', 'article': 'article', 
@@ -25,21 +25,22 @@ class App:
                 if ref_type:
                         fields = self.read_ref[ref_type]()
                         self.reference_services.create_reference(ref_type, fields)
-                        self.io.write(f"Reference type {ref_type} added")
+                        self.io.write(f"\nReference type {ref_type} added")
                 else:
-                    self.io.write("Invalid reference type.")
+                    self.io.write("Invalid reference type.\n")
 
             elif command in ["p", "print"]:
                 ref_list = self.reference_services.print_refs()
-                print("***REFERENCES***")      
+                print("\n\n***REFERENCES***\n")      
                 for ref in ref_list:   #siirretty tulostus tänne services:in puolelta
                    print(ref)
-
-            elif command in ["c", "create bib"]:
+                
+            elif command in ["c", "create BibTeX file"]:
                 self.reference_services.create_bib_format_file()
-                print(".bib file has been created")
+                print("Your BixTeX file has been created")
 
     def _read_reference(self, fields):
+        print("\n")
         return [self.io.read(f'Add {field}') for field in fields + ['bib_ref']]
 
     def _read_book(self):
