@@ -15,7 +15,7 @@ class TestApp(unittest.TestCase):
         self.mock_ref_service.create_reference.assert_called_once_with(
             'book', ['Author Name', 'Book Title', '2023', 'Publisher Name', '']
         )
-        self.mock_io.write.assert_any_call("Reference type book added")
+        self.mock_io.write.assert_any_call("\nReference type book added")
 
     def test_add_book_full_command(self):
         self.mock_io.read.side_effect = ['add', 'book', 'Author Another', 'Second Book Title',
@@ -24,7 +24,7 @@ class TestApp(unittest.TestCase):
         self.mock_ref_service.create_reference.assert_called_once_with(
             'book', ['Author Another', 'Second Book Title', '2123', 'Another Publisher', '']
         )
-        self.mock_io.write.assert_any_call("Reference type book added")
+        self.mock_io.write.assert_any_call("\nReference type book added")
 
     def test_print_short_command(self):
         self.mock_io.read.side_effect = ['p', '']
@@ -38,11 +38,11 @@ class TestApp(unittest.TestCase):
         # Need to test that the return value is correct
 
     def test_create_bib_short_command(self):
-        self.mock_io.read.side_effect = ['c', '']
+        self.mock_io.read.side_effect = ['c', 'My_Bibfile.bib', '']
 
         self.app.run()
         self.mock_ref_service.create_bib_format_file.assert_called_once()
-        # Just testing for calling of create_bib
+       # Just testing for calling of create_bib
 
 if __name__ == '__main__':
     unittest.main()
