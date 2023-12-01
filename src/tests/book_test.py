@@ -12,6 +12,5 @@ class TestBook(unittest.TestCase):
         self.book = Book('book', 'Kalle', 'kertomus', 2000, 'kustantaja', 'Kal00')
 
     def test_right_print(self):
-        output = f"  Type: book\n  Author: Kalle\n  Title: kertomus\
-            \n  Publication date: 2000\n  Publisher: kustantaja\n"
+        output = f"      Type: book\n    Author: Kalle\n     Title: kertomus\n Publisher: kustantaja\n      Year: 2000\n"
         self.assertEqual(str(self.book), output)
