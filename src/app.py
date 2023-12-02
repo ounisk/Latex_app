@@ -9,7 +9,7 @@ class App:
         self.read_ref = {"book": self._read_book, "article": self._read_article
                   , "inproceedings": self._read_inproceedings}
     
-    # Should this function be in this file? 
+    # Should this function be in this file? Vast: Vko3 loginrobotosissa tsekki oli sovelluslog./servicen puolella
     def _is_valid_filename(self, filename):
         return bool(re.match("^[A-Za-z0-9_.]+$", filename))
     
@@ -58,7 +58,7 @@ class App:
 
     def _read_reference(self, fields):
         print("\n")
-        return [self.io.read(f'Add {field}') for field in fields + ['bib_ref']]
+        return [self.io.read(f'Add {field}') for field in fields + ['bib reference']]
 
     def _read_book(self):
        return self._read_reference(['author','title','year','publisher'])
@@ -67,7 +67,7 @@ class App:
         return self._read_reference(['author','title','journal','year'])
 
     def _read_inproceedings(self):
-       return self._read_reference(['author','title','book_title','publisher','year'])
+       return self._read_reference(['author','title','book title','publisher','year'])
 
 
 
