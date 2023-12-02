@@ -21,9 +21,9 @@ class App:
                               'i': 'inproceedings', 'inproceedings': 'inproceedings'}
     
         while True:
-            command = self.io.read(f"Choose command (A)dd, (P)rint, (C)reate bib:").lower()  # Lisää vaihtoehtoja myöhemmin
+            command = self.io.read(f"Choose command (A)dd, (P)rint, (C)reate bib, (Q)uit:").lower()  # Lisää vaihtoehtoja myöhemmin
 
-            if not command:
+            if command in ["q", "quit"] or not command:
                 break
 
             if command in ["a", "add"]:
@@ -32,8 +32,14 @@ class App:
     
                 if ref_type:
                         fields = self.read_ref[ref_type]()
-                        self.reference_services.create_reference(ref_type, fields)
-                        self.io.write(f"\nReference type {ref_type} added")
+
+                        try:
+                            self.reference_services.create_reference(ref_type, fields)
+                            self.io.write(f"\nReference type {ref_type} added")
+                        except Exception as error:
+                            self.io.write(str(error))
+                            print("\n")
+
                 else:
                     self.io.write("Invalid reference type.\n")
 
