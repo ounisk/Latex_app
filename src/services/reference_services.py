@@ -1,7 +1,9 @@
+from datetime import datetime
 from entities.book import Book
 from entities.article import Article
 from entities.inpro import InProceedings
 from repositories.reference_repository import (reference_repository as default_reference_repository)
+
 
 class UserInputError(Exception):
     pass
@@ -36,8 +38,9 @@ class ReferenceService:
         return bib_file
     
     def validate_year(self, year):
-        if not 0<year<=2024:
-            raise UserInputError("Year has to be in the range of 0-2024. Please try again.")
-            
+        current_year = (datetime.now()).year
+        if not 0<= year <= current_year:
+            raise UserInputError(f"Year has to be in the range of 0-{current_year}. Please try again.")
+        
 
 references_service = ReferenceService()
