@@ -13,16 +13,16 @@ class TestApp(unittest.TestCase):
                                           'Publisher Name', '', '']
         self.app.run()
         self.mock_ref_service.create_reference.assert_called_once_with(
-            'book', ['Author Name', 'Book Title', '2023', 'Publisher Name', '']
+            'book', ['Author Name', 'Book Title', '2023', 'Publisher Name', '@Au23']
         )
         self.mock_io.write.assert_any_call("\nReference type book added")
 
     def test_add_book_full_command(self):
         self.mock_io.read.side_effect = ['add', 'book', 'Author Another', 'Second Book Title',
-                                          '2123', 'Another Publisher', '', '']
+                                          '2023', 'Another Publisher', '', '']
         self.app.run()
         self.mock_ref_service.create_reference.assert_called_once_with(
-            'book', ['Author Another', 'Second Book Title', '2123', 'Another Publisher', '']
+            'book', ['Author Another', 'Second Book Title', '2023', 'Another Publisher', '@Au23']
         )
         self.mock_io.write.assert_any_call("\nReference type book added")
 
