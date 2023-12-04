@@ -91,7 +91,8 @@ class App:
     
 
     def _add_bibref(self, fields):
-        bib_ref = f"@{fields[0][:2]+fields[2][-2:]}"
+        #bib_ref = f"@{fields[0][:2]+fields[2][-2:]}"
+        bib_ref = f"{fields[0][:2]+fields[2][-2:]}" #pyyhitty pois @, jotta vastaa kuvausta https://ohjelmistotuotanto-hy.github.io/speksi/
         #print (fields)
         return bib_ref
 
