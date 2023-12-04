@@ -9,8 +9,8 @@ from entities.book import Book
 
 class TestBook(unittest.TestCase):
     def setUp(self):
-        self.book = Book('book', 'Kalle', 'kertomus', 2000, 'kustantaja', 'Kal00')
+        self.book = Book('book', 'Kalle', 'kertomus', 2023, 'kustantaja', 'Kal00')
 
     def test_right_print(self):
-        output = f"      Type: book\n    Author: Kalle\n     Title: kertomus\n Publisher: kustantaja\n      Year: 2000\n"
+        output = f"      Type: book\n    Author: Kalle\n     Title: kertomus\n Publisher: kustantaja\n      Year: 2023\n"
         self.assertEqual(str(self.book), output)

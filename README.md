@@ -47,3 +47,4 @@ python3 src/index.py
 ```
 
 Available command options within the app are shown inside the parentheses.
+
