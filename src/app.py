@@ -31,9 +31,20 @@ class App:
                 ref_type = reference_type_map.get(ref_type_input)
     
                 if ref_type:
-                        fields = self.read_ref[ref_type]()
+                        fields = self.read_ref[ref_type]()   #
+                        #print(fields)
+                        default_bibref = self._add_bibref(fields)
+                        bibref_input = self.io.read(f"Add bibref for the reference (default: {default_bibref}):").strip()
+
+                        if not bibref_input:
+                            bibref_input = default_bibref
+                        #print(fields)
+                        #print(user_bib_ref)   # täydelliset fields
+                        
+                        fields.append(bibref_input)
 
                         try:
+                            
                             self.reference_services.create_reference(ref_type, fields)
                             self.io.write(f"\nReference type {ref_type} added")
                         except Exception as error:
@@ -64,16 +75,26 @@ class App:
 
     def _read_reference(self, fields):
         print("\n")
-        return [self.io.read(f'Add {field}') for field in fields + ['bib reference']]
+        return [self.io.read(f'Add {field}') for field in fields] #+ ['bib reference']]
+        #return [self.io.read(f'Add {field}') for field in fields + [self._add_bibref(fields)]]
 
     def _read_book(self):
        return self._read_reference(['author','title','year','publisher'])
     
     def _read_article(self):
-        return self._read_reference(['author','title','journal','year'])
+        #return self._read_reference(['author','title','journal','year'])
+        return self._read_reference(['author','title','year','journal'])
 
     def _read_inproceedings(self):
-       return self._read_reference(['author','title','book title','publisher','year'])
+       #return self._read_reference(['author','title','book title','publisher','year'])
+       return self._read_reference(['author','title', 'year','book title','publisher'])
+    
+
+    def _add_bibref(self, fields):
+        bib_ref = f"@{fields[0][:2]+fields[2][-2:]}"
+        #print (fields)
+        return bib_ref
+
 
 
 
