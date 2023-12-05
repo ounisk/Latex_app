@@ -9,7 +9,7 @@ Input Print Command
     Input  print
 
 Input Create Command
-    Input  create bib
+    Input  c
 
 Input Empty Command
     Input  ${EMPTY}
@@ -52,4 +52,9 @@ Input Inproceedings Reference
     Input  ${publisher}
     Input  ${year}
     Input  ${bib_ref}
+    Run Application
+
+Input File Name
+    [Arguments]  ${filename}
+    Input  ${filename}
     Run Application
