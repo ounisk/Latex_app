@@ -13,7 +13,7 @@ class TestApp(unittest.TestCase):
                                           'Publisher Name', '', '']
         self.app.run()
         self.mock_ref_service.create_reference.assert_called_once_with(
-            'book', ['Author Name', 'Book Title', '2023', 'Publisher Name', '@Au23']
+            'book', ['Author Name', 'Book Title', '2023', 'Publisher Name', 'Au23']
         )
         self.mock_io.write.assert_any_call("\nReference type book added")
 
@@ -22,7 +22,7 @@ class TestApp(unittest.TestCase):
                                           '2023', 'Another Publisher', '', '']
         self.app.run()
         self.mock_ref_service.create_reference.assert_called_once_with(
-            'book', ['Author Another', 'Second Book Title', '2023', 'Another Publisher', '@Au23']
+            'book', ['Author Another', 'Second Book Title', '2023', 'Another Publisher', 'Au23']
         )
         self.mock_io.write.assert_any_call("\nReference type book added")
 
