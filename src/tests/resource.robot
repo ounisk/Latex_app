@@ -21,6 +21,14 @@ Input Book Reference
     Input  ${bib_ref}
     Run Application
 
+Input Book Without Bibref
+    [Arguments]  ${type}  ${author}  ${title}  ${year}  ${publisher}  
+    Input  ${type}
+    Input  ${author}
+    Input  ${title}
+    Input  ${year}
+    Input  ${publisher}
+
 Input Article Reference
     [Arguments]  ${type}  ${author}  ${title}  ${journal}  ${year}  ${bib_ref}
     Input  ${type}

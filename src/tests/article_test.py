@@ -12,5 +12,5 @@ class TestArticle(unittest.TestCase):
         self.article = Article('article', 'Kalle', 'kertomus', 'journal', 2000, 'Kal00')
 
     def test_right_print(self):
-        output = f"      Type: article\n    Author: Kalle\n     Title: kertomus\n   Journal: journal\n      Year: 2000\n"
+        output = f"      Type: article\n    Author: Kalle\n     Title: kertomus\n   Journal: journal\n      Year: 2000\n   Bib ref: Kal00\n"
         self.assertEqual(str(self.article), output)

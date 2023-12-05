@@ -12,5 +12,5 @@ class TestInpro(unittest.TestCase):
         self.inpro = InProceedings('inproceedings', 'Kalle', 'kertomus', 'Book', 'Julkaisija', 2000, 'Kal00')
 
     def test_right_print(self):
-        output = f"      Type: inproceedings\n    Author: Kalle\n     Title: kertomus\nBook title: Book\n Publisher: Julkaisija\n      Year: 2000\n"
+        output = f"      Type: inproceedings\n    Author: Kalle\n     Title: kertomus\nBook title: Book\n Publisher: Julkaisija\n      Year: 2000\n   Bib ref: Kal00\n"
         self.assertEqual(str(self.inpro), output)
