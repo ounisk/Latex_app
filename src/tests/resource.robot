@@ -11,6 +11,9 @@ Input Print Command
 Input Create Command
     Input  create bib
 
+Input Empty Command
+    Input  ${EMPTY}
+
 Input Book Reference
     [Arguments]  ${type}  ${author}  ${title}  ${year}  ${publisher}  ${bib_ref}
     Input  ${type}
@@ -28,6 +31,7 @@ Input Book Without Bibref
     Input  ${title}
     Input  ${year}
     Input  ${publisher}
+    Run Application
 
 Input Article Reference
     [Arguments]  ${type}  ${author}  ${title}  ${journal}  ${year}  ${bib_ref}
