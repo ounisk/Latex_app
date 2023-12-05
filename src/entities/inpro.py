@@ -17,4 +17,5 @@ class InProceedings:
         book_title = f"{'Book title':>{spacing}}: {self.book_title}"
         publisher = f"{'Publisher':>{spacing}}: {self.publisher}"
         year = f"{'Year':>{spacing}}: {self.year}"
-        return "\n".join([ref_type, author, title, book_title, publisher, year]) + "\n"
+        bib_ref = f"{'Bib ref':>{spacing}}: {self.bib_ref}"
+        return "\n".join([ref_type, author, title, book_title, publisher, year, bib_ref]) + "\n"

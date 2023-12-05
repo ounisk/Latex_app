@@ -14,4 +14,5 @@ class Article:
         title = f"{'Title':>{spacing}}: {self.title}"
         journal = f"{'Journal':>{spacing}}: {self.journal}"
         year = f"{'Year':>{spacing}}: {self.year}"
-        return "\n".join([ref_type, author, title, journal, year]) + "\n"
+        bib_ref = f"{'Bib ref':>{spacing}}: {self.bib_ref}"
+        return "\n".join([ref_type, author, title, journal, year, bib_ref]) + "\n"
