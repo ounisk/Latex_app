@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import Mock
-from services.reference_services import ReferenceService
+from services.reference_services import ReferenceService, UserInputError
 from entities.book import Book
 from entities.article import Article
 from entities.inpro import InProceedings
@@ -36,6 +36,14 @@ class TestReferenceService(unittest.TestCase):
         new_ref = self.mock_reference_repository.create.call_args[0][0]
         self.assertIsInstance(new_ref, InProceedings)
         self.assertEqual(new_ref.author, 'Author Name')
+
+    def test_validate_year(self):
+        with self.assertRaises(UserInputError) as context:
+            self.reference_service.validate_year(-1)
+
+        output = "Year has to be in the range of 0-2023. Please try again."
+
+        self.assertEqual(str(context.exception), output)  
 
     # Copy similar to other types
     # Also need to test for faulty input "refence type = foobar"
