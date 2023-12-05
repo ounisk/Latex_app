@@ -11,11 +11,15 @@ class AppLibrary:
         self.dirname = os.path.dirname(__file__)
         self.robot_file_name = 'robot_references.csv'
         #ohje jos testaa .bib filen luontia, niin luo tähän:
-        #self.robot_bib_file_name = 'robot_references.bib'
-        #self.robot_bib_file_path = 'os.path.join(self.dirname, '..', 'data', self.robot_bib_file_name)
-        # ja muuta ao. näin: RefeferencesRepository(self.robot_file_path, self.robot_bib_file_path)
+        #self.robot_bib_file_name = 'robot_references.bib'   #tämä tulee testin inputina, ei anneta tässä
+
+        self.robot_bib_file_path = os.path.join(self.dirname, '..', 'data') #, self.robot_bib_file_name)
         self.robot_file_path = os.path.join(self.dirname, '..', 'data', self.robot_file_name)
-        self._reference_repository = ReferenceRepository(self.robot_file_path, self.robot_file_path)
+
+        # ja muuta ao. näin: RefeferencesRepository(self.robot_file_path, self.robot_bib_file_path)
+        #self._reference_repository = ReferenceRepository(self.robot_file_path, self.robot_file_path)
+        self._reference_repository = ReferenceRepository(self.robot_file_path, self.robot_bib_file_path)
+
         self._reference_service = ReferenceService(self._reference_repository)
 
 
@@ -41,3 +45,6 @@ class AppLibrary:
     def create_reference(self, type, fields):
     # Assuming create_user is a method of ReferenceService
         self._reference_service.create_user(type, *fields)
+
+    def create_bib_format_file(self, filename):
+        self._reference_service.create_bib_format_file(filename)   
