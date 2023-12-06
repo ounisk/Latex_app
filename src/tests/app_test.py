@@ -44,5 +44,11 @@ class TestApp(unittest.TestCase):
         self.mock_ref_service.create_bib_format_file.assert_called_once()
        # Just testing for calling of create_bib
 
+    def test_incorrect_reference_type(self):
+        self.mock_io.read.side_effect = ['a', 'e', '']
+
+        self.app.run()
+        self.mock_io.write.assert_called_with("Invalid reference type.\n")
+
 if __name__ == '__main__':
     unittest.main()
