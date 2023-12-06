@@ -50,5 +50,11 @@ class TestApp(unittest.TestCase):
         self.app.run()
         self.mock_io.write.assert_called_with("Invalid reference type.\n")
 
+    def test_create_bib_file_with_incorrect_filename(self):
+        self.mock_io.read.side_effect = ['c', '!', '', '']
+
+        self.app.run()
+        self.mock_io.write.assert_any_call("\nInvalid filename. Only letters, numbers, and underscores are allowed.")
+
 if __name__ == '__main__':
     unittest.main()
