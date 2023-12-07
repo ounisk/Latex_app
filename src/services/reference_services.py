@@ -36,11 +36,12 @@ class ReferenceService:
     def create_bib_format_file(self, filename):
         bib_file = self._reference_repository.create_file_in_bib(filename)
         return bib_file
-    
+
     def validate_year(self, year):
         current_year = (datetime.now()).year
         if not 0<= year <= current_year:
-            raise UserInputError(f"Year has to be in the range of 0-{current_year}. Please try again.")
-        
+            raise UserInputError(f"Year has to be in the range of\
+                                  0-{current_year}. Please try again.")
+
 
 references_service = ReferenceService()

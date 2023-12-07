@@ -82,16 +82,19 @@ class ReferenceRepository:
             for ref in references:
                 row = ""
                 if ref.ref_type == "book":
-                    row = ";".join([ref.bib_ref, ref.ref_type, ref.author, ref.title, ref.year, ref.publisher])
+                    row = ";".join(\
+                        [ref.bib_ref, ref.ref_type, ref.author, ref.title, ref.year, ref.publisher])
                 if ref.ref_type == "article":
-                    row = ";".join([ref.bib_ref, ref.ref_type, ref.author, ref.title, ref.journal, ref.year])
+                    row = ";".join(\
+                        [ref.bib_ref, ref.ref_type, ref.author, ref.title, ref.journal, ref.year])
                 if ref.ref_type == "inproceedings":
-                    row = ";".join([ref.bib_ref, ref.ref_type, ref.author, ref.title, ref.book_title, ref.publisher, ref.year])
+                    row = ";".join([ref.bib_ref, ref.ref_type, ref.author, \
+                                    ref.title, ref.book_title, ref.publisher, ref.year])
                 file.write(row+"\n")
 
     def create_file_in_bib(self, filename):
         full_bibfile_path = Path(self._bib_file_path, filename)
-        
+
         with open(self._file_path, encoding="utf-8") as file_csv:   #avataan csv-file
             with open(full_bibfile_path, "w") as file_bib: #avataan bib-file kirjoittamista varten
                 for row in file_csv:
