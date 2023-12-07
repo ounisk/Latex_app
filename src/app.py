@@ -63,9 +63,9 @@ class App:
             elif command in ["s", "summary"]:
                 ref_list = self.reference_services.print_refs()
                 self.io.write("\nReference Summary\n")
-                self.io.write("Type      Title     Author    Year\n")
+                self.io.write("Type      Title          Author              Year\n")
                 for ref in ref_list:
-                    self.io.write(f"{ref.ref_type:10}{ref.title:10}{ref.author:10}{ref.year}")
+                    self.io.write(f"{ref.ref_type:10}{ref.title:15}{ref.author:20}{ref.year}")
                 
             elif command in ["c", "create BibTeX file"]:
                 while True:
