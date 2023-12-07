@@ -43,8 +43,10 @@ class AppLibrary:
         self._app.run()
 
     def create_reference(self, type, fields):
-    # Assuming create_user is a method of ReferenceService
-        self._reference_service.create_user(type, *fields)
+        self._reference_service.create_reference(type, *fields)
 
     def create_bib_format_file(self, filename):
-        self._reference_service.create_bib_format_file(filename)   
+        self._reference_service.create_bib_format_file(filename)  
+
+    def print_refs(self):
+        self._reference_service.print_refs()
