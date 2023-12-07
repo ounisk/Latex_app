@@ -56,9 +56,9 @@ class App:
 
             elif command in ["p", "print"]:
                 ref_list = self.reference_services.print_refs()
-                print("\n\n***REFERENCES***\n")      
+                self.io.write("\n\n***REFERENCES***\n")      
                 for ref in ref_list:   #siirretty tulostus tänne services:in puolelta
-                   print(ref)
+                   self.io.write(ref)
                 
             elif command in ["c", "create BibTeX file"]:
                 while True:
