@@ -56,5 +56,19 @@ class TestApp(unittest.TestCase):
         self.app.run()
         self.mock_io.write.assert_any_call("\nInvalid filename. Only letters, numbers, and underscores are allowed.")
 
+    def test_print_summary(self):
+        self.mock_io.read.side_effect = ['s', '']
+        mock_book = Mock()
+        mock_book.ref_type = "book"
+        mock_book.title = "kirja"
+        mock_book.author = "kalle"
+        mock_book.year = "2000"
+
+        self.mock_ref_service.print_refs.return_value = [mock_book]
+
+        self.app.run()
+        self.mock_ref_service.print_refs.assert_called_once()
+
+
 if __name__ == '__main__':
     unittest.main()
