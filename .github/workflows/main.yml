@@ -28,4 +28,6 @@ jobs:
         run: bash <(curl -s https://codecov.io/bash)
       - name: Lint
         run: poetry run pylint src --fail-under 9
+      - name: Robot
+        run: poetry run robot src  
 
