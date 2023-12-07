@@ -11,9 +11,6 @@ Input Print Command
 Input Create Command
     Input  c
 
-Input Empty Command
-    Input  ${EMPTY}
-
 Input Book Reference
     [Arguments]  ${type}  ${author}  ${title}  ${year}  ${publisher}  ${bib_ref}
     Input  ${type}
@@ -25,13 +22,12 @@ Input Book Reference
     Run Application
 
 Input Book Without Bibref
-    [Arguments]  ${type}  ${author}  ${title}  ${year}  ${publisher}  
+    [Arguments]  ${type}  ${author}  ${title}  ${year}  ${publisher}
     Input  ${type}
     Input  ${author}
     Input  ${title}
     Input  ${year}
     Input  ${publisher}
-    Run Application
 
 Input Article Reference
     [Arguments]  ${type}  ${author}  ${title}  ${journal}  ${year}  ${bib_ref}
