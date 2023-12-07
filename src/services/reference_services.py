@@ -40,8 +40,8 @@ class ReferenceService:
     def validate_year(self, year):
         current_year = (datetime.now()).year
         if not 0<= year <= current_year:
-            raise UserInputError(f"Year has to be in the range of\
-                                  0-{current_year}. Please try again.")
+            raise UserInputError(\
+                f"Year has to be in the range of 0-{current_year}. Please try again.")
 
 
 references_service = ReferenceService()
