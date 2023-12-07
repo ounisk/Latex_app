@@ -15,4 +15,4 @@ class Book:
         publisher = f"{'Publisher':>{spacing}}: {self.publisher}"
         year = f"{'Year':>{spacing}}: {self.year}"
         bib_ref = f"{'Bib ref':>{spacing}}: {self.bib_ref}"
-        return "\n".join([ref_type, author, name, publisher, year, bib_ref]) + "\n"
+        return "\n".join([ref_type, author, title, publisher, year, bib_ref]) + "\n"

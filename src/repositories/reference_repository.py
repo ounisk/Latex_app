@@ -28,11 +28,11 @@ class ReferenceRepository:
                         bib_ref = parts[0]
                         ref_type = parts[1]   #
                         author = parts[2]
-                        name = parts[3]
+                        title = parts[3]
                         year = parts[4]
                         publisher = parts[5]
 
-                        references.append(Book(ref_type, author, name, year, publisher, bib_ref))
+                        references.append(Book(ref_type, author, title, year, publisher, bib_ref))
 
                     if parts[1] == "article":
                         bib_ref = parts[0]
@@ -82,7 +82,7 @@ class ReferenceRepository:
             for ref in references:
                 row = ""
                 if ref.ref_type == "book":
-                    row = ";".join([ref.bib_ref, ref.ref_type, ref.author, ref.name, ref.year, ref.publisher])
+                    row = ";".join([ref.bib_ref, ref.ref_type, ref.author, ref.title, ref.year, ref.publisher])
                 if ref.ref_type == "article":
                     row = ";".join([ref.bib_ref, ref.ref_type, ref.author, ref.title, ref.journal, ref.year])
                 if ref.ref_type == "inproceedings":

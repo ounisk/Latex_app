@@ -31,7 +31,7 @@ class TestReferenceRepository(unittest.TestCase):
         self.repository.create(new_book)
 
         references = self.repository.find_all()
-        self.assertTrue(any(book.author == new_book.author and book.name == new_book.name for book in references))
+        self.assertTrue(any(book.author == new_book.author and book.title == new_book.title for book in references))
 
     def test_create_article(self):
         new_article = Article("article", "Kalle", "Kallen OhTu seikkailut", "Kallen journal", "2023", "KA23")
@@ -57,7 +57,7 @@ class TestReferenceRepository(unittest.TestCase):
 
         reference = references[0]
         self.assertEqual(reference.author, "Kalle")
-        self.assertEqual(reference.name, "Kallen OhTu seikkailut")
+        self.assertEqual(reference.title, "Kallen OhTu seikkailut")
 
     def test_delete_all(self):
         book = Book("book", "Kalle", "Kallen OhTu seikkailut", "2023", "Kallen Omakustanne", "KA23")
