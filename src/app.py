@@ -14,14 +14,14 @@ class App:
         return bool(re.match("^[A-Za-z0-9_.]+$", filename))
     
     def run(self):
-        self.io.write("\n\nWelcome to Latex app")
+        self.io.write("\n\nWelcome to Latex app\n")
         # Different ways to choose the reference type, lower case.
         reference_type_map = {'b': 'book', 'book': 'book', 
                               'a': 'article', 'article': 'article', 
                               'i': 'inproceedings', 'inproceedings': 'inproceedings'}
     
         while True:
-            command = self.io.read(f"\nChoose command (A)dd, (P)rint, (C)reate bib, (S)ummary, (Q)uit:").lower()  # Lisää vaihtoehtoja myöhemmin
+            command = self.io.read(f"Choose command (A)dd, (P)rint, (C)reate bib, (S)ummary, (Q)uit:").lower()  # Lisää vaihtoehtoja myöhemmin
 
             if command in ["q", "quit"] or not command:
                 break
@@ -78,6 +78,7 @@ class App:
                     #              {ref.title:{max_ref_title}} \
                     #              {ref.author:{max_ref_author}} \
                      #             {ref.year}")
+                self.io.write('\n')
                 
             elif command in ["c", "create BibTeX file"]:
                 while True:
