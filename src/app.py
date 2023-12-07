@@ -21,7 +21,7 @@ class App:
                               'i': 'inproceedings', 'inproceedings': 'inproceedings'}
     
         while True:
-            command = self.io.read(f"Choose command (A)dd, (P)rint, (C)reate bib, (Q)uit:").lower()  # Lisää vaihtoehtoja myöhemmin
+            command = self.io.read(f"Choose command (A)dd, (P)rint, (C)reate bib, (S)ummary, (Q)uit:").lower()  # Lisää vaihtoehtoja myöhemmin
 
             if command in ["q", "quit"] or not command:
                 break
@@ -59,6 +59,13 @@ class App:
                 self.io.write("\n\n***REFERENCES***\n")      
                 for ref in ref_list:   #siirretty tulostus tänne services:in puolelta
                    self.io.write(ref)
+
+            elif command in ["s", "summary"]:
+                ref_list = self.reference_services.print_refs()
+                self.io.write("\nReference Summary\n")
+                self.io.write("Type      Title     Author    Year\n")
+                for ref in ref_list:
+                    self.io.write(f"{ref.ref_type:10}{ref.title:10}{ref.author:10}{ref.year}")
                 
             elif command in ["c", "create BibTeX file"]:
                 while True:
