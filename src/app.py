@@ -43,8 +43,7 @@ class App:
                         
                         fields.append(bibref_input)
 
-                        try:
-                            
+                        try: 
                             self.reference_services.create_reference(ref_type, fields)
                             self.io.write(f"\nReference type {ref_type} added")
                         except Exception as error:
