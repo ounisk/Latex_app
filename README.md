@@ -38,6 +38,7 @@ Enter virtual environment with command:
 
 ```bash
 poetry shell
+
 ```
 
 Now the app will start with command:
