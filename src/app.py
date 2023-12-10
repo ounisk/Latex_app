@@ -69,12 +69,13 @@ class App:
                 max_ref_type = max(max([len(ref.ref_type) for ref in ref_list]) + 2,10)
                 max_ref_title = max(max([len(ref.title) for ref in ref_list]) + 2,10)
                 max_ref_author = max(max([len(ref.author) for ref in ref_list]) + 2,10)
+                max_ref_bib = max(max([len(ref.bib_ref) for ref in ref_list]) + 2,10)
                 max_ref_year = max(max([len(str(ref.year)) for ref in ref_list]) + 2,10)
 
                 
-                self.io.write(f"{'Type':{max_ref_type}}{'Title':{max_ref_title}}{'Author':{max_ref_author}}Year\n")
+                self.io.write(f"{'Type':{max_ref_type}}{'Title':{max_ref_title}}{'Author':{max_ref_author}}{'Bib-ref':{max_ref_bib}}Year\n")
                 for ref in ref_list:
-                    self.io.write(f"{ref.ref_type:{max_ref_type}}{ref.title:{max_ref_title}}{ref.author:{max_ref_author}}{ref.year}")
+                    self.io.write(f"{ref.ref_type:{max_ref_type}}{ref.title:{max_ref_title}}{ref.author:{max_ref_author}}{ref.bib_ref:{max_ref_bib}}{ref.year}")
                    # self.io.write(f"{ref.ref_type:{max_ref_type}} \
                     #              {ref.title:{max_ref_title}} \
                     #              {ref.author:{max_ref_author}} \
