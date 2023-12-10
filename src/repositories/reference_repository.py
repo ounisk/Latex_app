@@ -8,8 +8,6 @@ class ReferenceRepository:
     def __init__(self, file_path, bib_file_path):
         self._file_path = file_path
         self._bib_file_path = bib_file_path
-        #self._references = []
-
 
     def _check_file(self):
         Path(self._file_path).touch()
@@ -24,9 +22,9 @@ class ReferenceRepository:
                 parts = row.split(";")
 
                 if len(parts) >= 6:
-                    if parts[1]== "book": #
+                    if parts[1]== "book":
                         bib_ref = parts[0]
-                        ref_type = parts[1]   #
+                        ref_type = parts[1]
                         author = parts[2]
                         title = parts[3]
                         year = parts[4]
@@ -36,7 +34,7 @@ class ReferenceRepository:
 
                     if parts[1] == "article":
                         bib_ref = parts[0]
-                        ref_type = parts[1]   #
+                        ref_type = parts[1]
                         author = parts[2]
                         title = parts[3]
                         journal = parts[4]
@@ -59,23 +57,20 @@ class ReferenceRepository:
 
 
     def find_all(self):
-        #return self._references
         return self._get_list()
 
 
     def create(self, book):
         references = self.find_all()
         references.append(book)
-
-        #self._references = references
-        self._update(references)   #uuden kirjan jälkeen updatetaan file
+        self._update(references)
         return book
 
-    def delete_all(self):    #tyhjentää koko listan, hyödyksi esim. testaamisessa
+    def delete_all(self):
         list_references = []
         self._update(list_references)
 
-    def _update(self, references):   #päivittää filen uusilla tiedoilla
+    def _update(self, references):
         self._check_file()
 
         with open(self._file_path, "w", encoding="utf-8") as file:
@@ -95,8 +90,8 @@ class ReferenceRepository:
     def create_file_in_bib(self, filename):
         full_bibfile_path = Path(self._bib_file_path, filename)
 
-        with open(self._file_path, encoding="utf-8") as file_csv:   #avataan csv-file
-            with open(full_bibfile_path, "w") as file_bib: #avataan bib-file kirjoittamista varten
+        with open(self._file_path, encoding="utf-8") as file_csv:
+            with open(full_bibfile_path, "w") as file_bib:
                 for row in file_csv:
                     row = row.replace("\n", "")
                     ref_parts = row.split(";")
@@ -111,7 +106,6 @@ class ReferenceRepository:
                             year = ref_parts[4]
                             publisher = ref_parts[5]
 
-                            #bibtex_ref = f"@book{{{bib_ref},\n"f" author = {{{author}}},\n" \
                             bibtex_ref = \
                                 f"@{ref_type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
                             f"  title =  {{{title}}},\n"\
@@ -129,7 +123,6 @@ class ReferenceRepository:
                             journal = ref_parts[4]
                             year = ref_parts[5]
 
-                            #bibtex_ref = f"@book{{{bib_ref},\n"f" author = {{{author}}},\n" \
                             bibtex_ref = f"@{ref_type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
                             f"  title =  {{{title}}},\n"\
                             f"  journal =  {{{journal}}},\n"\
@@ -147,7 +140,6 @@ class ReferenceRepository:
                             publisher = ref_parts[5]
                             year = ref_parts[6]
 
-                            #bibtex_ref = f"@book{{{bib_ref},\n"f" author = {{{author}}},\n" \
                             bibtex_ref = f"@{ref_type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
                             f"  title =  {{{title}}},\n"\
                             f"  book title =  {{{book_title}}},\n"\
