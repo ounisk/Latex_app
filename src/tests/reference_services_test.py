@@ -20,7 +20,8 @@ class TestReferenceService(unittest.TestCase):
         self.assertEqual(new_ref.author, 'Author Name')
 
     def test_create_reference_article(self):
-        fields = ['Author Name', 'Article Title', '2023', 'Journal', '']
+        #fields = ['Author Name', 'Article Title', '2023', 'Journal', '']
+        fields = ['Author Name', 'Article Title', 'Journal', '2023', '']
         self.reference_service.create_reference('article', fields)
 
         self.mock_reference_repository.create.assert_called_once()
@@ -29,7 +30,8 @@ class TestReferenceService(unittest.TestCase):
         self.assertEqual(new_ref.author, 'Author Name')
 
     def test_create_reference_inproceedings(self):
-        fields = ['Author Name', 'Title', '2023', 'Book Title', 'Publisher Name', '']
+        #fields = ['Author Name', 'Title', '2023', 'Book Title', 'Publisher Name', '']
+        fields = ['Author Name', 'Title', 'Book Title', 'Publisher Name', '2023', '']
         self.reference_service.create_reference('inproceedings', fields)
 
         self.mock_reference_repository.create.assert_called_once()
