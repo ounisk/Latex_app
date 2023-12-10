@@ -33,7 +33,7 @@ class App:
                 if ref_type:
                         fields = self.read_ref[ref_type]()   #
                         #print(fields)
-                        default_bibref = self._add_bibref(fields)
+                        default_bibref = self._add_bibref(ref_type, fields)
                         bibref_input = self.io.read(f"Add bibref for the reference (default: {default_bibref}):").strip()
 
                         if not bibref_input:
@@ -58,6 +58,7 @@ class App:
                 ref_list = self.reference_services.print_refs()
                 self.io.write("\n\n***REFERENCES***\n")      
                 for ref in ref_list:   #siirretty tulostus tänne services:in puolelta
+                   #print(ref)
                    self.io.write(ref)
 
             elif command in ["s", "summary"]:
@@ -102,18 +103,22 @@ class App:
        return self._read_reference(['author','title','year','publisher'])
     
     def _read_article(self):
-        #return self._read_reference(['author','title','journal','year'])
-        return self._read_reference(['author','title','year','journal'])
+        return self._read_reference(['author','title','journal','year'])
+        #return self._read_reference(['author','title','year','journal']) #tämä oli edellinen, tuli ongelmia tulostuksessa
 
     def _read_inproceedings(self):
-       #return self._read_reference(['author','title','book title','publisher','year'])
-       return self._read_reference(['author','title', 'year','book title','publisher'])
+       return self._read_reference(['author','title','book title','publisher','year'])
+       #return self._read_reference(['author','title', 'year','book title','publisher'])
     
 
-    def _add_bibref(self, fields):
-        #bib_ref = f"@{fields[0][:2]+fields[2][-2:]}"
-        bib_ref = f"{fields[0][:2]+fields[2][-2:]}" #pyyhitty pois @, jotta vastaa kuvausta https://ohjelmistotuotanto-hy.github.io/speksi/
-        #print (fields)
+    def _add_bibref(self, ref_type, fields):
+        if ref_type == 'book':
+            bib_ref = f"{fields[0][:2]+fields[2][-2:]}"
+        elif ref_type == 'article':
+            bib_ref = f"{fields[0][:2]+fields[3][-2:]}"
+        elif ref_type == 'inproceedings':
+            bib_ref = f"{fields[0][:2]+fields[4][-2:]}"
+
         return bib_ref
 
 
