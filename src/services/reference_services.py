@@ -18,11 +18,11 @@ class ReferenceService:
             ref = Book(ref_type, *fields)
 
         elif ref_type == 'article':
-            self. validate_year(int(fields[2]))
+            self. validate_year(int(fields[3]))
             ref = Article(ref_type, *fields)
 
         elif ref_type == 'inproceedings':
-            self. validate_year(int(fields[2]))
+            self. validate_year(int(fields[4]))
             ref = InProceedings(ref_type, *fields)
 
         return self._reference_repository.create(ref)
@@ -31,7 +31,7 @@ class ReferenceService:
         return self._reference_repository.find_all()
 
     def delete_all_references(self):
-        self._reference_repository.delete_all()  #tarvitaan etenkin testauksessa tyhjentämään file
+        self._reference_repository.delete_all()
 
     def create_bib_format_file(self, filename):
         bib_file = self._reference_repository.create_file_in_bib(filename)
