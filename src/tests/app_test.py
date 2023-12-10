@@ -63,7 +63,7 @@ class TestApp(unittest.TestCase):
         mock_book.title = "kirja"
         mock_book.author = "kalle"
         mock_book.year = "2000"
-
+        mock_book.bib_ref = "ka00"
         self.mock_ref_service.print_refs.return_value = [mock_book]
 
         self.app.run()
