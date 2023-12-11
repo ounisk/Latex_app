@@ -54,16 +54,14 @@ class App:
                 ref_type = reference_type_map.get(ref_type_input)
     
                 if ref_type:
-                        fields = self.read_ref[ref_type]()   #
+                        fields = self.read_ref[ref_type]()
                         #print(fields)
                         default_bibref = self._add_bibref(ref_type, fields)
                         bibref_input = self.io.read(f"Add bibref for the reference (default: {default_bibref}):").strip()
 
                         if not bibref_input:
                             bibref_input = default_bibref
-                        #print(fields)
-                        #print(user_bib_ref)   # täydelliset fields
-                        
+
                         fields.append(bibref_input)
 
                         try:
@@ -79,11 +77,12 @@ class App:
             
             elif command in ['d', 'delete']:
                 self.delete()
+                self.io.write(f"The reference has been deleted. Select (C)reate bib to update your bib-file.\n")
 
             elif command in ["p", "print"]:
                 ref_list = self.reference_services.print_refs()
                 self.io.write("\n\n***REFERENCES***\n")      
-                for ref in ref_list:   #siirretty tulostus tänne services:in puolelta
+                for ref in ref_list:
                    #print(ref)
                    self.io.write(ref)
 
