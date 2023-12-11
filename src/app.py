@@ -17,7 +17,6 @@ class App:
         ref_list = self.reference_services.print_refs()
         self.io.write("\nReference Summary\n")
                 
-        #print(ref_list)
         max_ref_type = max(max([len(ref.ref_type) for ref in ref_list]) + 2,10)
         max_ref_title = max(max([len(ref.title) for ref in ref_list]) + 2,10)
         max_ref_author = max(max([len(ref.author) for ref in ref_list]) + 2,10)
@@ -55,7 +54,6 @@ class App:
     
                 if ref_type:
                         fields = self.read_ref[ref_type]()
-                        #print(fields)
                         default_bibref = self._add_bibref(ref_type, fields)
                         bibref_input = self.io.read(f"Add bibref for the reference (default: {default_bibref}):").strip()
 
@@ -83,7 +81,6 @@ class App:
                 ref_list = self.reference_services.print_refs()
                 self.io.write("\n\n***REFERENCES***\n")      
                 for ref in ref_list:
-                   #print(ref)
                    self.io.write(ref)
 
             elif command in ["s", "summary"]:
