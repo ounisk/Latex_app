@@ -20,39 +20,26 @@ class ReferenceRepository:
             for row in file:
                 row = row.replace("\n", "")
                 parts = row.split(";")
-
+            
                 if len(parts) >= 6:
-                    if parts[1]== "book":
-                        bib_ref = parts[0]
-                        ref_type = parts[1]
-                        author = parts[2]
-                        title = parts[3]
+                    bib_ref = parts[0]
+                    ref_type = parts[1]
+                    author = parts[2]
+                    title = parts[3]
+                    if ref_type == 'book':
                         year = parts[4]
                         publisher = parts[5]
-
                         references.append(Book(ref_type, author, title, year, publisher, bib_ref))
-
-                    if parts[1] == "article":
-                        bib_ref = parts[0]
-                        ref_type = parts[1]
-                        author = parts[2]
-                        title = parts[3]
+                    elif ref_type == 'article':
                         journal = parts[4]
                         year = parts[5]
-
                         references.append(Article(ref_type, author, title, journal, year, bib_ref))
-
-                    if parts[1] == "inproceedings":
-                        bib_ref = parts[0]
-                        ref_type = parts[1]
-                        author = parts[2]
-                        title = parts[3]
+                    elif ref_type == 'inproceedings':
                         book_title = parts[4]
                         publisher = parts[5]
                         year = parts[6]
                         references.append(InProceedings(ref_type, author, title, book_title,\
                                                         publisher, year, bib_ref))
-
             return references
 
     def delete_from_repository(self, bib_ref_del): # korjattu toimivaksi
@@ -64,11 +51,8 @@ class ReferenceRepository:
                 references_without_deleted_reference.append(ref)
         self._update(references_without_deleted_reference)   #....ja lopuksi päivittää tällä uudella listalla,
                                                              # jossa ei nyt mukana sitä mikä haluttiin poistaa.                                   
-
-
     def find_all(self):
         return self._get_list()
-
 
     def create(self, book):
         references = self.find_all()
@@ -87,14 +71,13 @@ class ReferenceRepository:
             for ref in references:
                 row = ""
                 if ref.ref_type == "book":
-                    row = ";".join(\
-                        [ref.bib_ref, ref.ref_type, ref.author, ref.title, ref.year, ref.publisher])
-                if ref.ref_type == "article":
-                    row = ";".join(\
-                        [ref.bib_ref, ref.ref_type, ref.author, ref.title, ref.journal, ref.year])
-                if ref.ref_type == "inproceedings":
-                    row = ";".join([ref.bib_ref, ref.ref_type, ref.author, \
-                                    ref.title, ref.book_title, ref.publisher, ref.year])
+                    exclusive_fields = [ref.year, ref.publisher]
+                elif ref.ref_type == "article":
+                    exclusive_fields = [ref.journal, ref.year]
+                elif ref.ref_type == "inproceedings":
+                    exclusive_fields = [ref.book_title, ref.publisher, ref.year]
+                row = ";".join(\
+                        [ref.bib_ref, ref.ref_type, ref.author, ref.title]+exclusive_fields)    
                 file.write(row+"\n")
 
     def create_file_in_bib(self, filename):
@@ -106,61 +89,38 @@ class ReferenceRepository:
                     row = row.replace("\n", "")
                     ref_parts = row.split(";")
 
-
                     if len(ref_parts) >= 6:
-                        if ref_parts[1]== "book":
-                            bib_ref = ref_parts[0]
-                            ref_type = ref_parts[1]
-                            author = ref_parts[2]
-                            title = ref_parts[3]
+                        bib_ref = ref_parts[0]
+                        ref_type = ref_parts[1]
+                        author = ref_parts[2]
+                        title = ref_parts[3]
+                        if ref_type == "book":
                             year = ref_parts[4]
                             publisher = ref_parts[5]
-
                             bibtex_ref = \
                                 f"@{ref_type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
                             f"  title =  {{{title}}},\n"\
                             f"  year =  {{{year}}},\n"\
                             f"  publisher =  {{{publisher}}},\n"\
                             f"}}\n"
-
-                            file_bib.write(bibtex_ref+"\n")
-
-                        if ref_parts[1]== "article":
-                            bib_ref = ref_parts[0]
-                            ref_type = ref_parts[1]
-                            author = ref_parts[2]
-                            title = ref_parts[3]
+                        elif ref_type == "article":
                             journal = ref_parts[4]
                             year = ref_parts[5]
-
                             bibtex_ref = f"@{ref_type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
                             f"  title =  {{{title}}},\n"\
                             f"  journal =  {{{journal}}},\n"\
                             f"  year =  {{{year}}},\n"\
                             f"}}\n"
-
-                            file_bib.write(bibtex_ref+"\n")
-
-                        if ref_parts[1]== "inproceedings":
-                            bib_ref = ref_parts[0]
-                            ref_type = ref_parts[1]
-                            author = ref_parts[2]
-                            title = ref_parts[3]
+                        elif ref_type == "inproceedings":
                             book_title = ref_parts[4]
                             publisher = ref_parts[5]
                             year = ref_parts[6]
-
                             bibtex_ref = f"@{ref_type}{{{bib_ref},\n"f"  author = {{{author}}},\n" \
                             f"  title =  {{{title}}},\n"\
                             f"  book title =  {{{book_title}}},\n"\
                             f"  publisher =  {{{publisher}}},\n"\
                             f"  year =  {{{year}}},\n"\
                             f"}}\n"
-
-                            file_bib.write(bibtex_ref+"\n")
-
-
-
-
+                        file_bib.write(bibtex_ref+"\n")
 
 reference_repository = ReferenceRepository(ALIST_FILE_PATH, BIB_FILE_PATH)

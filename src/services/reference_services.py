@@ -4,7 +4,6 @@ from entities.article import Article
 from entities.inpro import InProceedings
 from repositories.reference_repository import (reference_repository as default_reference_repository)
 
-
 class UserInputError(Exception):
     pass
 
@@ -45,6 +44,5 @@ class ReferenceService:
     
     def delete_reference(self, bib_ref):
         self._reference_repository.delete_from_repository(bib_ref)
-
 
 references_service = ReferenceService()
