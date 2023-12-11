@@ -39,6 +39,14 @@ class TestReferenceService(unittest.TestCase):
         self.assertIsInstance(new_ref, InProceedings)
         self.assertEqual(new_ref.author, 'Author Name')
 
+    #def test_delete_reference(self):
+    #    fields1 = ['Author1', 'Book1', '2023', 'Publisher1 Name', 'Au23']
+    #    fields2 = ['Author2', 'Book2', '2020', 'Publisher2 Name', 'Au20']
+    #    self.reference_service.create_reference('book', fields1)
+    #    self.reference_service.create_reference('book', fields2)
+    #    self.reference_service.delete_reference('Au23')
+        
+
     def test_validate_year(self):
         with self.assertRaises(UserInputError) as context:
             self.reference_service.validate_year(-1)
