@@ -55,12 +55,16 @@ class ReferenceRepository:
 
             return references
 
-    def delete_from_repository(self, bib_ref): # KESKEN, EI TOIMI VIELÄ
-        references = self.find_all()
-        #print(references)
-        #print(references[0])
-        #references_without_deleted = filter(lambda references: references[0] != bib_ref, references)
-        #self._update(references_without_deleted)
+    def delete_from_repository(self, bib_ref_del): # korjattu toimivaksi
+        references = self.find_all()      #hakee filen nykyisillä tiedoilla
+        references_without_deleted_reference = []     
+        for ref in references:   #jos ref.bib_ref EI mätsää siihen mitä halutaan poistaa, niin lisää uuteen listaan
+            if ref.bib_ref != bib_ref_del:
+                #print(row)
+                references_without_deleted_reference.append(ref)
+        self._update(references_without_deleted_reference)   #....ja lopuksi päivittää tällä uudella listalla,
+                                                             # jossa ei nyt mukana sitä mikä haluttiin poistaa.                                   
+
 
     def find_all(self):
         return self._get_list()
