@@ -55,6 +55,12 @@ class ReferenceRepository:
 
             return references
 
+    def delete_from_repository(self, bib_ref): # KESKEN, EI TOIMI VIELÄ
+        references = self.find_all()
+        #print(references)
+        #print(references[0])
+        #references_without_deleted = filter(lambda references: references[0] != bib_ref, references)
+        #self._update(references_without_deleted)
 
     def find_all(self):
         return self._get_list()

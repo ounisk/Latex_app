@@ -42,6 +42,9 @@ class ReferenceService:
         if not 0<= year <= current_year:
             raise UserInputError(\
                 f"Year has to be in the range of 0-{current_year}. Please try again.")
+    
+    def delete_reference(self, bib_ref):
+        self._reference_repository.delete_from_repository(bib_ref)
 
 
 references_service = ReferenceService()
