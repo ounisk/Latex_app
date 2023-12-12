@@ -70,12 +70,12 @@ class App:
                         if not bibref_input:
                             bibref_input = default_bibref
                         fields.append(bibref_input)
-                        try:
-                            self.reference_services.create_reference(ref_type, fields)
-                            self.io.write(f"\nReference type {ref_type} added")
-                        except Exception as error:
-                            self.io.write(str(error))
-                            print("\n")
+                        #try:
+                        self.reference_services.create_reference(ref_type, fields)
+                        self.io.write(f"\nReference type {ref_type} added")
+                        #except Exception as error:
+                            #self.io.write(str(error))
+                            #print("\n")
                 else:
                     self.io.write("Invalid reference type.\n")
             
@@ -93,7 +93,20 @@ class App:
 
     def _read_reference(self, fields):
         print("\n")
-        return [self.io.read(f'Add {field}') for field in fields]
+        user_inputs = []
+        for field in fields:
+            if field != 'year':
+                user_inputs.append(self.io.read(f'Add {field}'))
+            elif field == 'year':
+                while True:
+                    year = self.io.read(f'Add {field}')
+                    try:
+                        if self.reference_services.validate_year(year):
+                            user_inputs.append(str(year))
+                            break
+                    except Exception as error:
+                        self.io.write(error)
+        return user_inputs
     
     def _read_book(self):
        return self._read_reference(['author','title','year','publisher'])
