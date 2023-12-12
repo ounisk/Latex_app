@@ -70,12 +70,8 @@ class App:
                         if not bibref_input:
                             bibref_input = default_bibref
                         fields.append(bibref_input)
-                        #try:
                         self.reference_services.create_reference(ref_type, fields)
                         self.io.write(f"\nReference type {ref_type} added")
-                        #except Exception as error:
-                            #self.io.write(str(error))
-                            #print("\n")
                 else:
                     self.io.write("Invalid reference type.\n")
             
