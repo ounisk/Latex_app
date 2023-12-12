@@ -68,7 +68,6 @@ class TestReferenceRepository(unittest.TestCase):
         references = self.repository.find_all()
         self.assertEqual(len(references), 0)
 
-    # Tämä on tosi huono, mutta en saa tomimaan muutenkaan järkevästi. Pitäisi refaktoroida tiedoston käsittely jossain vaiheessa.
     def test_create_file_in_bib(self):
         book = Book("book", "Kalle", "Kallen OhTu seikkailut", "2023", "Kallen Omakustanne", "KA23")
         self.repository.create(book)

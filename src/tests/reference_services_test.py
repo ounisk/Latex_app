@@ -20,7 +20,6 @@ class TestReferenceService(unittest.TestCase):
         self.assertEqual(new_ref.author, 'Author Name')
 
     def test_create_reference_article(self):
-        #fields = ['Author Name', 'Article Title', '2023', 'Journal', '']
         fields = ['Author Name', 'Article Title', 'Journal', '2023', '']
         self.reference_service.create_reference('article', fields)
 
@@ -30,7 +29,6 @@ class TestReferenceService(unittest.TestCase):
         self.assertEqual(new_ref.author, 'Author Name')
 
     def test_create_reference_inproceedings(self):
-        #fields = ['Author Name', 'Title', '2023', 'Book Title', 'Publisher Name', '']
         fields = ['Author Name', 'Title', 'Book Title', 'Publisher Name', '2023', '']
         self.reference_service.create_reference('inproceedings', fields)
 
@@ -46,13 +44,10 @@ class TestReferenceService(unittest.TestCase):
     #    self.reference_service.create_reference('book', fields2)
     #    self.reference_service.delete_reference('Au23')
         
-
     def test_validate_year(self):
         with self.assertRaises(UserInputError) as context:
             self.reference_service.validate_year(-1)
-
         output = "Year has to be in the range of 0-2023. Please try again."
-
         self.assertEqual(str(context.exception), output)  
 
     # Copy similar to other types

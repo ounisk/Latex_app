@@ -6,7 +6,6 @@ def main():
     service_ref = ReferenceService()
     console_io = ConsoleIO()
     app = App(service_ref, console_io)
-
     app.run()
 
 if __name__ == "__main__":

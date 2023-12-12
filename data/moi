@@ -1,0 +1,624 @@
+@book{d,
+  author = {f},
+  title =  {g},
+  year =  {f},
+  publisher =  {d},
+}
+
+@book{e,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {s},
+}
+
+@book{d,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {a},
+}
+
+@book{bbb,
+  author = {e},
+  title =  {r},
+  year =  {t},
+  publisher =  {y},
+}
+
+@article{eeeeeeeeee,
+  author = {a},
+  title =  {d},
+  journal =  {f},
+  year =  {g},
+}
+
+@book{f,
+  author = {s},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@article{rrr,
+  author = {a},
+  title =  {f},
+  journal =  {g},
+  year =  {e},
+}
+
+@book{w,
+  author = {w},
+  title =  {e},
+  year =  {r},
+  publisher =  {f},
+}
+
+@article{q,
+  author = {a},
+  title =  {d},
+  journal =  {d},
+  year =  {d},
+}
+
+@book{f,
+  author = {m},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@book{d,
+  author = {f},
+  title =  {g},
+  year =  {f},
+  publisher =  {d},
+}
+
+@book{e,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {s},
+}
+
+@book{d,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {a},
+}
+
+@book{bbb,
+  author = {e},
+  title =  {r},
+  year =  {t},
+  publisher =  {y},
+}
+
+@article{eeeeeeeeee,
+  author = {a},
+  title =  {d},
+  journal =  {f},
+  year =  {g},
+}
+
+@book{f,
+  author = {s},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@article{rrr,
+  author = {a},
+  title =  {f},
+  journal =  {g},
+  year =  {e},
+}
+
+@book{w,
+  author = {w},
+  title =  {e},
+  year =  {r},
+  publisher =  {f},
+}
+
+@article{q,
+  author = {a},
+  title =  {d},
+  journal =  {d},
+  year =  {d},
+}
+
+@book{f,
+  author = {m},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@book{j,
+  author = {d},
+  title =  {f},
+  year =  {g},
+  publisher =  {h},
+}
+
+@book{d,
+  author = {f},
+  title =  {g},
+  year =  {f},
+  publisher =  {d},
+}
+
+@book{e,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {s},
+}
+
+@book{d,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {a},
+}
+
+@book{bbb,
+  author = {e},
+  title =  {r},
+  year =  {t},
+  publisher =  {y},
+}
+
+@article{eeeeeeeeee,
+  author = {a},
+  title =  {d},
+  journal =  {f},
+  year =  {g},
+}
+
+@book{f,
+  author = {s},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@article{rrr,
+  author = {a},
+  title =  {f},
+  journal =  {g},
+  year =  {e},
+}
+
+@book{w,
+  author = {w},
+  title =  {e},
+  year =  {r},
+  publisher =  {f},
+}
+
+@article{q,
+  author = {a},
+  title =  {d},
+  journal =  {d},
+  year =  {d},
+}
+
+@book{f,
+  author = {m},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@book{d,
+  author = {f},
+  title =  {g},
+  year =  {f},
+  publisher =  {d},
+}
+
+@book{e,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {s},
+}
+
+@book{d,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {a},
+}
+
+@book{bbb,
+  author = {e},
+  title =  {r},
+  year =  {t},
+  publisher =  {y},
+}
+
+@article{eeeeeeeeee,
+  author = {a},
+  title =  {d},
+  journal =  {f},
+  year =  {g},
+}
+
+@book{f,
+  author = {s},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@article{rrr,
+  author = {a},
+  title =  {f},
+  journal =  {g},
+  year =  {e},
+}
+
+@book{w,
+  author = {w},
+  title =  {e},
+  year =  {r},
+  publisher =  {f},
+}
+
+@article{q,
+  author = {a},
+  title =  {d},
+  journal =  {d},
+  year =  {d},
+}
+
+@book{f,
+  author = {m},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@book{j,
+  author = {d},
+  title =  {f},
+  year =  {g},
+  publisher =  {h},
+}
+
+@book{asd,
+  author = {asdfg},
+  title =  {asdfgh},
+  year =  {asdf},
+  publisher =  {asdf},
+}
+
+@book{d,
+  author = {f},
+  title =  {g},
+  year =  {f},
+  publisher =  {d},
+}
+
+@book{e,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {s},
+}
+
+@book{d,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {a},
+}
+
+@book{bbb,
+  author = {e},
+  title =  {r},
+  year =  {t},
+  publisher =  {y},
+}
+
+@article{eeeeeeeeee,
+  author = {a},
+  title =  {d},
+  journal =  {f},
+  year =  {g},
+}
+
+@book{f,
+  author = {s},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@article{rrr,
+  author = {a},
+  title =  {f},
+  journal =  {g},
+  year =  {e},
+}
+
+@book{w,
+  author = {w},
+  title =  {e},
+  year =  {r},
+  publisher =  {f},
+}
+
+@article{q,
+  author = {a},
+  title =  {d},
+  journal =  {d},
+  year =  {d},
+}
+
+@book{f,
+  author = {m},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@book{d,
+  author = {f},
+  title =  {g},
+  year =  {f},
+  publisher =  {d},
+}
+
+@book{e,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {s},
+}
+
+@book{d,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {a},
+}
+
+@book{bbb,
+  author = {e},
+  title =  {r},
+  year =  {t},
+  publisher =  {y},
+}
+
+@article{eeeeeeeeee,
+  author = {a},
+  title =  {d},
+  journal =  {f},
+  year =  {g},
+}
+
+@book{f,
+  author = {s},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@article{rrr,
+  author = {a},
+  title =  {f},
+  journal =  {g},
+  year =  {e},
+}
+
+@book{w,
+  author = {w},
+  title =  {e},
+  year =  {r},
+  publisher =  {f},
+}
+
+@article{q,
+  author = {a},
+  title =  {d},
+  journal =  {d},
+  year =  {d},
+}
+
+@book{f,
+  author = {m},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@book{j,
+  author = {d},
+  title =  {f},
+  year =  {g},
+  publisher =  {h},
+}
+
+@book{d,
+  author = {f},
+  title =  {g},
+  year =  {f},
+  publisher =  {d},
+}
+
+@book{e,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {s},
+}
+
+@book{d,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {a},
+}
+
+@book{bbb,
+  author = {e},
+  title =  {r},
+  year =  {t},
+  publisher =  {y},
+}
+
+@article{eeeeeeeeee,
+  author = {a},
+  title =  {d},
+  journal =  {f},
+  year =  {g},
+}
+
+@book{f,
+  author = {s},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@article{rrr,
+  author = {a},
+  title =  {f},
+  journal =  {g},
+  year =  {e},
+}
+
+@book{w,
+  author = {w},
+  title =  {e},
+  year =  {r},
+  publisher =  {f},
+}
+
+@article{q,
+  author = {a},
+  title =  {d},
+  journal =  {d},
+  year =  {d},
+}
+
+@book{f,
+  author = {m},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@book{d,
+  author = {f},
+  title =  {g},
+  year =  {f},
+  publisher =  {d},
+}
+
+@book{e,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {s},
+}
+
+@book{d,
+  author = {a},
+  title =  {s},
+  year =  {2},
+  publisher =  {a},
+}
+
+@book{bbb,
+  author = {e},
+  title =  {r},
+  year =  {t},
+  publisher =  {y},
+}
+
+@article{eeeeeeeeee,
+  author = {a},
+  title =  {d},
+  journal =  {f},
+  year =  {g},
+}
+
+@book{f,
+  author = {s},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@article{rrr,
+  author = {a},
+  title =  {f},
+  journal =  {g},
+  year =  {e},
+}
+
+@book{w,
+  author = {w},
+  title =  {e},
+  year =  {r},
+  publisher =  {f},
+}
+
+@article{q,
+  author = {a},
+  title =  {d},
+  journal =  {d},
+  year =  {d},
+}
+
+@book{f,
+  author = {m},
+  title =  {d},
+  year =  {f},
+  publisher =  {f},
+}
+
+@book{j,
+  author = {d},
+  title =  {f},
+  year =  {g},
+  publisher =  {h},
+}
+
+@book{asd,
+  author = {asdfg},
+  title =  {asdfgh},
+  year =  {asdf},
+  publisher =  {asdf},
+}
+
+@inproceedings{sd,
+  author = {moi moi},
+  title =  {kkkkkkk},
+  book title =  {adsdds},
+  publisher =  {asdds},
+  year =  {ad},
+}
+
+@book{ee,
+  author = {a},
+  title =  {d},
+  year =  {2000},
+  publisher =  {ee},
+}
+
+@book{me23,
+  author = {meeri},
+  title =  {talouskasvu kiinassa},
+  year =  {2023},
+  publisher =  {julkaisija},
+}
+
