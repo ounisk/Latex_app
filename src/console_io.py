@@ -3,6 +3,6 @@ class ConsoleIO:
         print(value)
 
     def read(self, prompt):
-        return input(f"{prompt:70}")
+        return input(f"{prompt:80}")
     
 
