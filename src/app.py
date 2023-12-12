@@ -28,17 +28,34 @@ class App:
         self.summary()
         delete_bib_ref = self.io.read(f'Give bibref you want to delete: ').strip()
         self.reference_services.delete_reference(delete_bib_ref)
+        self.io.write(f"The reference has been deleted. Select (C)reate bib to update your bib-file.\n")
+    
+    def print(self):
+        ref_list = self.reference_services.print_refs()
+        self.io.write("\n\n***REFERENCES***\n")      
+        for ref in ref_list:
+            self.io.write(ref)
+
+    def create_bibtex(self):
+        while True:
+            default_filename = BIB_FILENAME
+            filename_input = self.io.read(f"Enter filename for BibTeX file (default: {default_filename}):").strip()
+            filename = filename_input if filename_input else BIB_FILENAME
+                    
+            if self._is_valid_filename(filename):
+                self.reference_services.create_bib_format_file(filename)
+                self.io.write(f"Your BibTeX file '{filename}' has been created\n")
+                break
+            else:
+                self.io.write("\nInvalid filename. Only letters, numbers, and underscores are allowed.")
     
     def run(self):
         self.io.write("\n\nWelcome to Latex app\n")
-        
         reference_type_map = {'b': 'book', 'book': 'book', 
                               'a': 'article', 'article': 'article', 
                               'i': 'inproceedings', 'inproceedings': 'inproceedings'}
-
         while True:
-            command = self.io.read(f"Choose command (A)dd, (P)rint, (C)reate bib, (S)ummary, (Q)uit, (D)elete:").lower()  # Lisää vaihtoehtoja myöhemmin
-
+            command = self.io.read(f"Choose command (A)dd, (P)rint, (C)reate bib, (S)ummary, (Q)uit, (D)elete:").lower()
             if command in ["q", "quit"] or not command:
                 break
 
@@ -64,30 +81,15 @@ class App:
             
             elif command in ['d', 'delete']:
                 self.delete()
-                self.io.write(f"The reference has been deleted. Select (C)reate bib to update your bib-file.\n")
 
             elif command in ["p", "print"]:
-                ref_list = self.reference_services.print_refs()
-                self.io.write("\n\n***REFERENCES***\n")      
-                for ref in ref_list:
-                   #print(ref)
-                   self.io.write(ref)
+                self.print()
 
             elif command in ["s", "summary"]:
                 self.summary()
                 
             elif command in ["c", "create BibTeX file"]:
-                while True:
-                    default_filename = BIB_FILENAME
-                    filename_input = self.io.read(f"Enter filename for BibTeX file (default: {default_filename}):").strip()
-                    filename = filename_input if filename_input else BIB_FILENAME
-                    
-                    if self._is_valid_filename(filename):
-                        self.reference_services.create_bib_format_file(filename)
-                        self.io.write(f"Your BibTeX file '{filename}' has been created\n")
-                        break
-                    else:
-                        self.io.write("\nInvalid filename. Only letters, numbers, and underscores are allowed.")
+                self.create_bibtex()
 
     def _read_reference(self, fields):
         print("\n")
