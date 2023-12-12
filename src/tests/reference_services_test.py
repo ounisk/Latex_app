@@ -52,7 +52,3 @@ class TestReferenceService(unittest.TestCase):
             self.reference_service.validate_year("-1")
         output = "Year has to be in the range of 0-2023. Please try again."
         self.assertEqual(str(context.exception), output)  
-
-    # Copy similar to other types
-    # Also need to test for faulty input "refence type = foobar"
-
