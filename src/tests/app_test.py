@@ -28,22 +28,19 @@ class TestApp(unittest.TestCase):
 
     def test_print_short_command(self):
         self.mock_io.read.side_effect = ['p', '']
-        # Just return something, not testing for reference validity
         mock_references = ['  Type: book\n  Author: Author Name\n  Title: Book Title\
             \n  Publication date: 2023\n  Publisher: Publisher Name\n']
         self.mock_ref_service.print_refs.return_value = mock_references
 
         self.app.run()
         self.mock_ref_service.print_refs.assert_called_once()
-        # Need to test that the return value is correct
 
     def test_create_bib_short_command(self):
         self.mock_io.read.side_effect = ['c', 'My_Bibfile.bib', '']
 
         self.app.run()
         self.mock_ref_service.create_bib_format_file.assert_called_once()
-       # Just testing for calling of create_bib
-
+        
     def test_incorrect_reference_type(self):
         self.mock_io.read.side_effect = ['a', 'e', '']
 
