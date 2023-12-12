@@ -11,6 +11,9 @@ Input Print Command
 Input Create Command
     Input  c
 
+Input Delete Command
+    Input  d
+
 Input Book Reference
     [Arguments]  ${type}  ${author}  ${title}  ${year}  ${publisher}  ${bib_ref}
     Input  ${type}
@@ -78,3 +81,9 @@ Input File Name
     [Arguments]  ${filename}
     Input  ${filename}
     Run Application
+
+Input Bibref
+    [Arguments]  ${bib_ref}
+    Input  ${bib_ref}
+    Run Application 
+
