@@ -8,7 +8,10 @@ Add Article Successfully
     Output Should Contain  \nReference type article added
 
 Add Article With Invalid Year
-    Input Article Reference  article  kalle  otsikko  julkaisu  2032  kalle2032
+    Input Article Without Bibref  article  kalle  otsikko  julkaisu  2032
+    Input  2022
+    Input  ka22
+    Run Application
     Output Should Contain  Year has to be in the range of 0-2023. Please try again.
     
 
