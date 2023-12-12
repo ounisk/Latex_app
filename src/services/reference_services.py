@@ -13,15 +13,12 @@ class ReferenceService:
 
     def create_reference(self, ref_type, fields):
         if ref_type == 'book':
-            #self.validate_year(int(fields[2]))
             ref = Book(ref_type, *fields)
 
         elif ref_type == 'article':
-            #self.validate_year(int(fields[3]))
             ref = Article(ref_type, *fields)
 
         elif ref_type == 'inproceedings':
-            #self.validate_year(int(fields[4]))
             ref = InProceedings(ref_type, *fields)
 
         return self._reference_repository.create(ref)
