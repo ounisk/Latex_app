@@ -1,6 +1,6 @@
 ## Introduction:
 
-This is a course project for a Software Engineering course at the University of Helsinki during fall 2023. The software is an application where the user can input references (e.g. for bachelor's thesis) and the application will convert the references into BibTex-format in a .bib-file.
+This is a course project for a Software Engineering course at the University of Helsinki during fall 2023. The software is an application where the user can input references (e.g. for bachelor's thesis) and the application will convert the references into BibTeX-format in a .bib-file.
 
 
 ## Documentation:
