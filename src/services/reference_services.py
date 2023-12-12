@@ -13,15 +13,15 @@ class ReferenceService:
 
     def create_reference(self, ref_type, fields):
         if ref_type == 'book':
-            self.validate_year(int(fields[2]))
+            #self.validate_year(int(fields[2]))
             ref = Book(ref_type, *fields)
 
         elif ref_type == 'article':
-            self.validate_year(int(fields[3]))
+            #self.validate_year(int(fields[3]))
             ref = Article(ref_type, *fields)
 
         elif ref_type == 'inproceedings':
-            self.validate_year(int(fields[4]))
+            #self.validate_year(int(fields[4]))
             ref = InProceedings(ref_type, *fields)
 
         return self._reference_repository.create(ref)
@@ -37,10 +37,15 @@ class ReferenceService:
         return bib_file
 
     def validate_year(self, year):
-        current_year = (datetime.now()).year
-        if not 0<= year <= current_year:
-            raise UserInputError(\
-                f"Year has to be in the range of 0-{current_year}. Please try again.")
+        if year.isnumeric() or "-" in year:
+            current_year = (datetime.now()).year
+            if not 0<= int(year) <= current_year:
+                raise UserInputError(\
+                    f"Year has to be in the range of 0-{current_year}. Please try again.")
+            return True
+        else:
+            raise UserInputError("Year has to be numeric.")
+
     
     def delete_reference(self, bib_ref):
         self._reference_repository.delete_from_repository(bib_ref)
