@@ -87,7 +87,17 @@ class TestReferenceRepository(unittest.TestCase):
                 content = bibfile.read()
                 self.assertEqual(content, '')
 
-    def test_delete_existing_reference(self):
+    def test_delete_one_reference(self):
+        bib_ref_to_delete = "AU23"
+        reference = Article("article", "Author", "Title", "Journal", "2023", "AU23")
+        self.repository.create(reference)
+        reference = Article("article", "Kalle", "Oma OhTu", "OhTun Tarinat", "2023", "KA23")
+        self.repository.create(reference)
+        self.repository.delete_from_repository(bib_ref_to_delete)
+        remaining = self.repository.find_all()
+        self.assertEqual(len(remaining), 1)
+
+    def test_delete_final_existing_reference(self):
         bib_ref_to_delete = "AU23"
         reference = Article("article", "Author", "Title", "Journal", "2023", bib_ref_to_delete)
         self.repository.create(reference)
