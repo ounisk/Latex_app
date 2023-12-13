@@ -15,9 +15,9 @@ class TestReferenceRepository(unittest.TestCase):
         self.temp_dir = tempfile.TemporaryDirectory()
         self.repository = ReferenceRepository(self.test_file.name, self.temp_dir.name)
 
-#    def tearDown(self):
-#        os.remove(self.test_file.name)
-#        self.temp_dir.cleanup()
+    def tearDown(self):
+        os.remove(self.test_file.name)
+        self.temp_dir.cleanup()
 
     def test_check_file(self):
         self.repository._check_file()
@@ -86,3 +86,18 @@ class TestReferenceRepository(unittest.TestCase):
             with open('test.bib', 'r') as bibfile:
                 content = bibfile.read()
                 self.assertEqual(content, '')
+
+    def test_delete_existing_reference(self):
+        bib_ref_to_delete = "AU23"
+        reference = Article("article", "Author", "Title", "Journal", "2023", bib_ref_to_delete)
+        self.repository.create(reference)
+        self.repository.delete_from_repository(bib_ref_to_delete)
+        remaining = self.repository.find_all()
+        self.assertEqual(len(remaining), 0)
+
+    def test_delete_nonexistent_reference(self):
+        bib_ref_not_existing = "XX00"
+        references = []
+        self.repository.delete_from_repository(bib_ref_not_existing)
+        all_references = self.repository.find_all()
+        self.assertEqual(references, all_references)
