@@ -74,3 +74,23 @@ class TestReferenceService(unittest.TestCase):
                 self.reference_service.validate_year(str(year))
             output = f"Year has to be in the range of 0-{current_year}. Please try again."
             self.assertEqual(str(test.exception), output)
+
+    def test_create_bib_format_file(self):
+        filename = "test.bib"
+        self.mock_reference_repository.create_file_in_bib.return_value = True
+        result = self.reference_service.create_bib_format_file(filename)
+        self.assertEqual(result, True)
+        self.mock_reference_repository.create_file_in_bib.assert_called_once_with(filename)
+
+    def test_print_refs_empty(self):
+        self.mock_reference_repository.find_all.return_value = []
+        result = self.reference_service.print_refs()
+        self.assertEqual(result, [])
+        self.mock_reference_repository.find_all.assert_called_once()
+
+    def test_print_refs(self):
+        reference1 = Book("book", "Author1", "Book1", "2023", "Publisher", "AU23")
+        reference2 = Article("article", "Author2", "Article", "Journal", "2023", "A223")
+        self.mock_reference_repository.find_all.return_value = [reference1, reference2]
+        self.reference_service.print_refs()
+        self.mock_reference_repository.find_all.assert_called_once()
