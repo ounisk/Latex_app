@@ -94,3 +94,13 @@ class TestReferenceService(unittest.TestCase):
         self.mock_reference_repository.find_all.return_value = [reference1, reference2]
         self.reference_service.print_refs()
         self.mock_reference_repository.find_all.assert_called_once()
+    
+    def test_delete_all_references(self):
+        self.mock_reference_repository.create.return_value = True
+        self.reference_service.create_reference('book', ['Kalle', 'Book on OhTu', '2023', 'UH Press', 'KA23'])
+        self.reference_service.create_reference('article', ['Kille', 'Article on OhTu', 'OhTu Journal', '2023', 'KI23'])
+        self.mock_reference_repository.find_all.side_effect = [[]]
+        self.reference_service.delete_all_references()
+        self.mock_reference_repository.delete_all.assert_called_once()
+        self.assertEqual(self.mock_reference_repository.find_all(), [])
+        
