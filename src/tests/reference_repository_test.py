@@ -2,6 +2,7 @@ import unittest
 import tempfile
 import os
 from repositories.reference_repository import ReferenceRepository
+from unittest.mock import patch, mock_open
 from entities.book import Book
 from entities.article import Article
 from entities.inpro import InProceedings
@@ -14,9 +15,9 @@ class TestReferenceRepository(unittest.TestCase):
         self.temp_dir = tempfile.TemporaryDirectory()
         self.repository = ReferenceRepository(self.test_file.name, self.temp_dir.name)
 
-    def tearDown(self):
-        os.remove(self.test_file.name)
-        self.temp_dir.cleanup()
+#    def tearDown(self):
+#        os.remove(self.test_file.name)
+#        self.temp_dir.cleanup()
 
     def test_check_file(self):
         self.repository._check_file()
@@ -78,3 +79,10 @@ class TestReferenceRepository(unittest.TestCase):
             self.repository.create_file_in_bib('test_bib_file.bib')
 
         self.assertEqual(mock_file.call_count, 2)
+
+    def test_create_file_in_bib_empty_file(self):
+        with patch('builtins.open', mock_open(read_data='')):
+            self.repository.create_file_in_bib('test.bib')
+            with open('test.bib', 'r') as bibfile:
+                content = bibfile.read()
+                self.assertEqual(content, '')
