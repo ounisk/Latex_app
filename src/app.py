@@ -88,7 +88,7 @@ class App:
                 self.create_bibtex()
 
     def _read_reference(self, fields):
-        print("\n")
+        self.io.write("\n")
         user_inputs = []
         for field in fields:
             if field != 'year':
