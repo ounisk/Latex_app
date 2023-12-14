@@ -8,6 +8,9 @@ Input Add Command
 Input Print Command
     Input  print
 
+Input Summary Command
+    Input  summary
+
 Input Create Command
     Input  c
 
