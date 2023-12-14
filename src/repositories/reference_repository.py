@@ -42,15 +42,14 @@ class ReferenceRepository:
                                                         publisher, year, bib_ref))
             return references
 
-    def delete_from_repository(self, bib_ref_del): # korjattu toimivaksi
-        references = self.find_all()      #hakee filen nykyisillä tiedoilla
+    def delete_from_repository(self, bib_ref_del):
+        references = self.find_all()
         references_without_deleted_reference = []     
-        for ref in references:   #jos ref.bib_ref EI mätsää siihen mitä halutaan poistaa, niin lisää uuteen listaan
+        for ref in references:
             if ref.bib_ref != bib_ref_del:
-                #print(row)
                 references_without_deleted_reference.append(ref)
-        self._update(references_without_deleted_reference)   #....ja lopuksi päivittää tällä uudella listalla,
-                                                             # jossa ei nyt mukana sitä mikä haluttiin poistaa.                                   
+        self._update(references_without_deleted_reference)
+                                         
     def find_all(self):
         return self._get_list()
 

@@ -40,3 +40,6 @@ class AppLibrary:
 
     def print_refs(self):
         self._reference_service.print_refs()
+
+    def delete_reference(self, delete_bib_ref):
+        self._reference_service.delete_reference(delete_bib_ref)    

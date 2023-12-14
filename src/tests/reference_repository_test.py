@@ -2,6 +2,7 @@ import unittest
 import tempfile
 import os
 from repositories.reference_repository import ReferenceRepository
+from unittest.mock import patch, mock_open
 from entities.book import Book
 from entities.article import Article
 from entities.inpro import InProceedings
@@ -78,3 +79,35 @@ class TestReferenceRepository(unittest.TestCase):
             self.repository.create_file_in_bib('test_bib_file.bib')
 
         self.assertEqual(mock_file.call_count, 2)
+
+    def test_create_file_in_bib_empty_file(self):
+        with patch('builtins.open', mock_open(read_data='')):
+            self.repository.create_file_in_bib('test.bib')
+            with open('test.bib', 'r') as bibfile:
+                content = bibfile.read()
+                self.assertEqual(content, '')
+
+    def test_delete_one_reference(self):
+        bib_ref_to_delete = "AU23"
+        reference = Article("article", "Author", "Title", "Journal", "2023", "AU23")
+        self.repository.create(reference)
+        reference = Article("article", "Kalle", "Oma OhTu", "OhTun Tarinat", "2023", "KA23")
+        self.repository.create(reference)
+        self.repository.delete_from_repository(bib_ref_to_delete)
+        remaining = self.repository.find_all()
+        self.assertEqual(len(remaining), 1)
+
+    def test_delete_final_existing_reference(self):
+        bib_ref_to_delete = "AU23"
+        reference = Article("article", "Author", "Title", "Journal", "2023", bib_ref_to_delete)
+        self.repository.create(reference)
+        self.repository.delete_from_repository(bib_ref_to_delete)
+        remaining = self.repository.find_all()
+        self.assertEqual(len(remaining), 0)
+
+    def test_delete_nonexistent_reference(self):
+        bib_ref_not_existing = "XX00"
+        references = []
+        self.repository.delete_from_repository(bib_ref_not_existing)
+        all_references = self.repository.find_all()
+        self.assertEqual(references, all_references)

@@ -1,6 +1,13 @@
+## Introduction:
+
+This is a course project for a Software Engineering course at the University of Helsinki during fall 2023. The software is an application where the user can input references (e.g. for bachelor's thesis) and the application will convert the references into BibTeX-format in a .bib-file, which can then be used in LateX document.
+
+
 ## Documentation:
 
 [Product ja sprint backlog](https://docs.google.com/spreadsheets/d/1vIzl9-QaEVPuQLQGrVproVWpNlVGVxZaNG2fZBDroAM/edit?usp=sharing)
+
+[Loppuraportti](https://docs.google.com/document/d/1_bRUUzXp7SN47RmmtrWD38XYcfQ_dr4cH_6mxyQaQB8/edit?usp=sharing)
 
 
 ## Definition of Done:
