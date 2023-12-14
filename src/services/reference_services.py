@@ -43,7 +43,7 @@ class ReferenceService:
         else:
             raise UserInputError("Year has to be numeric.")
 
-    
+
     def delete_reference(self, bib_ref):
         self._reference_repository.delete_from_repository(bib_ref)
 

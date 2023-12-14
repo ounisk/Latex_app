@@ -20,7 +20,7 @@ class ReferenceRepository:
             for row in file:
                 row = row.replace("\n", "")
                 parts = row.split(";")
-            
+
                 if len(parts) >= 6:
                     bib_ref = parts[0]
                     ref_type = parts[1]
@@ -44,12 +44,12 @@ class ReferenceRepository:
 
     def delete_from_repository(self, bib_ref_del):
         references = self.find_all()
-        references_without_deleted_reference = []     
+        references_without_deleted_reference = []
         for ref in references:
             if ref.bib_ref != bib_ref_del:
                 references_without_deleted_reference.append(ref)
         self._update(references_without_deleted_reference)
-                                         
+
     def find_all(self):
         return self._get_list()
 
@@ -76,7 +76,7 @@ class ReferenceRepository:
                 elif ref.ref_type == "inproceedings":
                     exclusive_fields = [ref.book_title, ref.publisher, ref.year]
                 row = ";".join(\
-                        [ref.bib_ref, ref.ref_type, ref.author, ref.title]+exclusive_fields)    
+                        [ref.bib_ref, ref.ref_type, ref.author, ref.title]+exclusive_fields)
                 file.write(row+"\n")
 
     def create_file_in_bib(self, filename):
