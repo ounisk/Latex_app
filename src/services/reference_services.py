@@ -23,7 +23,7 @@ class ReferenceService:
 
         return self._reference_repository.create(ref)
 
-    def print_refs(self):
+    def print_references(self):
         return self._reference_repository.find_all()
 
     def delete_all_references(self):
